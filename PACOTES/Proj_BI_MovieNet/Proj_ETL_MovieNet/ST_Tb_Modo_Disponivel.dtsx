@@ -1,0 +1,1092 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/21/2022 7:06:16 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ANALIMA"
+  DTS:CreatorName="ANALIMA\limaa"
+  DTS:DTSID="{2F74B7EB-4F26-4CF1-84F9-52ECE7E204FC}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.845.0"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="ST_Tb_Modo_Disponivel"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{F349A5A9-D857-4B49-841A-AAF159F20859}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\area DW"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{9F2AED83-56FD-4EBB-8B04-1DE84E28D964}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="area DW">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\area DW\Indo Dim_Modo_Disponivel"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarefa Fluxo de Dados"
+          DTS:DTSID="{2CC402D2-E21B-43D3-9536-4C287FD64DAE}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Indo Dim_Modo_Disponivel"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\area DW\Indo Dim_Modo_Disponivel\Dim_Modo_Disponivel"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino OLE DB"
+                  name="Dim_Modo_Disponivel"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[Dim_Modo_Disponivel]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\area DW\Indo Dim_Modo_Disponivel\Dim_Modo_Disponivel.Connections[OleDbConnection]"
+                      connectionManagerID="{D89AFA85-D355-4220-A373-7799801915A7}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_DW]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\area DW\Indo Dim_Modo_Disponivel\Dim_Modo_Disponivel.Inputs[Entrada de Destino OLE DB]"
+                      errorOrTruncationOperation="Inserir"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Destino OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Disponivel\Dim_Modo_Disponivel.Inputs[Entrada de Destino OLE DB].Columns[idmododisponivel]"
+                          cachedDataType="i4"
+                          cachedName="idmododisponivel"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Modo_Disponivel\Dim_Modo_Disponivel.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdModoDisponivel]"
+                          lineageId="Package\area DW\Indo Dim_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Origem OLE DB].Columns[idmododisponivel]" />
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Disponivel\Dim_Modo_Disponivel.Inputs[Entrada de Destino OLE DB].Columns[nome_modo_disponivel]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="nome_modo_disponivel"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Modo_Disponivel\Dim_Modo_Disponivel.Inputs[Entrada de Destino OLE DB].ExternalColumns[Nome_Modo_Disponivel]"
+                          lineageId="Package\area DW\Indo Dim_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Origem OLE DB].Columns[nome_modo_disponivel]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Modo_Disponivel\Dim_Modo_Disponivel.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdModoDisponivel]"
+                          dataType="i4"
+                          name="IdModoDisponivel" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Modo_Disponivel\Dim_Modo_Disponivel.Inputs[Entrada de Destino OLE DB].ExternalColumns[Nome_Modo_Disponivel]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="Nome_Modo_Disponivel" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\area DW\Indo Dim_Modo_Disponivel\Dim_Modo_Disponivel.Outputs[Saída de Erro de Destino OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Destino OLE DB"
+                      synchronousInputId="Package\area DW\Indo Dim_Modo_Disponivel\Dim_Modo_Disponivel.Inputs[Entrada de Destino OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Disponivel\Dim_Modo_Disponivel.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Modo_Disponivel\Dim_Modo_Disponivel.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Disponivel\Dim_Modo_Disponivel.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Modo_Disponivel\Dim_Modo_Disponivel.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\area DW\Indo Dim_Modo_Disponivel\ST_Tb_Modo_Disponivel"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+                  description="Origem OLE DB"
+                  name="ST_Tb_Modo_Disponivel"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[ST_Tb_Modo_Disponivel]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT idmododisponivel, nome_modo_disponivel
+FROM ST_Tb_Modo_Disponivel
+WHERE IdModoDisponivel
+		NOT IN(SELECT IdModoDisponivel
+				FROM [MovieNet_DW].[dbo].[Dim_Modo_Disponivel])</property>
+                    <property
+                      dataType="System.String"
+                      description="A variável que contém o comando SQL a ser executado."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\area DW\Indo Dim_Modo_Disponivel\ST_Tb_Modo_Disponivel.Connections[OleDbConnection]"
+                      connectionManagerID="{1D6CEC87-8244-454A-9B04-42DB1B6285E6}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_STAGE]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\area DW\Indo Dim_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Origem OLE DB]"
+                      name="Saída de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Origem OLE DB].Columns[idmododisponivel]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Origem OLE DB].ExternalColumns[idmododisponivel]"
+                          lineageId="Package\area DW\Indo Dim_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Origem OLE DB].Columns[idmododisponivel]"
+                          name="idmododisponivel"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Origem OLE DB].Columns[nome_modo_disponivel]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Origem OLE DB].ExternalColumns[nome_modo_disponivel]"
+                          length="20"
+                          lineageId="Package\area DW\Indo Dim_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Origem OLE DB].Columns[nome_modo_disponivel]"
+                          name="nome_modo_disponivel"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Origem OLE DB].ExternalColumns[idmododisponivel]"
+                          dataType="i4"
+                          name="idmododisponivel" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Origem OLE DB].ExternalColumns[nome_modo_disponivel]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="nome_modo_disponivel" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\area DW\Indo Dim_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Erro de Origem OLE DB]"
+                      isErrorOut="true"
+                      name="Saída de Erro de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Erro de Origem OLE DB].Columns[idmododisponivel]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Erro de Origem OLE DB].Columns[idmododisponivel]"
+                          name="idmododisponivel" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Erro de Origem OLE DB].Columns[nome_modo_disponivel]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\area DW\Indo Dim_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Erro de Origem OLE DB].Columns[nome_modo_disponivel]"
+                          name="nome_modo_disponivel" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\area DW\Indo Dim_Modo_Disponivel.Paths[Saída de Origem OLE DB]"
+                  endId="Package\area DW\Indo Dim_Modo_Disponivel\Dim_Modo_Disponivel.Inputs[Entrada de Destino OLE DB]"
+                  name="Saída de Origem OLE DB"
+                  startId="Package\area DW\Indo Dim_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Origem OLE DB]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\area stage"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{BB4B8F9E-8E3B-41D0-9F2C-10595DC89B6C}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="area stage">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\area stage\Indo ST_Tb_Modo_Disponivel"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarefa Fluxo de Dados"
+          DTS:DTSID="{76FFFAC0-DB25-40DB-937E-C2CAA81EE729}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Indo ST_Tb_Modo_Disponivel"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Conversão de Dados"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Conversão de Dados;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;0"
+                  description="Conversão de Dados"
+                  name="Conversão de Dados"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Conversão de Dados.Inputs[Entrada de Conversão de Dados]"
+                      name="Entrada de Conversão de Dados">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Conversão de Dados.Inputs[Entrada de Conversão de Dados].Columns[Modo_Disponivel]"
+                          cachedDataType="wstr"
+                          cachedLength="9"
+                          cachedName="Modo_Disponivel"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Subtituição_Valores.Outputs[Saída de Coluna Derivada].Columns[Modo_Disponivel]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Conversão de Dados.Outputs[Saída de Conversão de Dados]"
+                      exclusionGroup="1"
+                      name="Saída de Conversão de Dados"
+                      synchronousInputId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Conversão de Dados.Inputs[Entrada de Conversão de Dados]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Conversão de Dados.Outputs[Saída de Conversão de Dados].Columns[Copy of Modo_Disponivel]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          length="9"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Conversão de Dados.Outputs[Saída de Conversão de Dados].Columns[Copy of Modo_Disponivel]"
+                          name="Copy of Modo_Disponivel"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Especifica a coluna de entrada usada como a origem dois dados para a conversão."
+                              name="SourceInputColumnLineageID">#{Package\area stage\Indo ST_Tb_Modo_Disponivel\Subtituição_Valores.Outputs[Saída de Coluna Derivada].Columns[Modo_Disponivel]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica se a coluna usa as rotinas de análise de localidade neutro mais rápidas."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Conversão de Dados.Outputs[Saída de Erro de Conversão de Dados]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Conversão de Dados"
+                      synchronousInputId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Conversão de Dados.Inputs[Entrada de Conversão de Dados]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Conversão de Dados.Outputs[Saída de Erro de Conversão de Dados].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Conversão de Dados.Outputs[Saída de Erro de Conversão de Dados].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Conversão de Dados.Outputs[Saída de Erro de Conversão de Dados].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Conversão de Dados.Outputs[Saída de Erro de Conversão de Dados].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\ST_Tb_Modo_Disponivel"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino OLE DB"
+                  name="ST_Tb_Modo_Disponivel"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[ST_Tb_Modo_Disponivel]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\ST_Tb_Modo_Disponivel.Connections[OleDbConnection]"
+                      connectionManagerID="{1D6CEC87-8244-454A-9B04-42DB1B6285E6}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_STAGE]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\ST_Tb_Modo_Disponivel.Inputs[Entrada de Destino OLE DB]"
+                      errorOrTruncationOperation="Inserir"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Destino OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\ST_Tb_Modo_Disponivel.Inputs[Entrada de Destino OLE DB].Columns[IdModoDisponivel]"
+                          cachedDataType="i4"
+                          cachedName="IdModoDisponivel"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Modo_Disponivel\ST_Tb_Modo_Disponivel.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdModoDisponivel]"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel.Outputs[Saída de Origem OLE DB].Columns[IdModoDisponivel]" />
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\ST_Tb_Modo_Disponivel.Inputs[Entrada de Destino OLE DB].Columns[Copy of Modo_Disponivel]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="9"
+                          cachedName="Copy of Modo_Disponivel"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Modo_Disponivel\ST_Tb_Modo_Disponivel.Inputs[Entrada de Destino OLE DB].ExternalColumns[Nome_Modo_Disponivel]"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Conversão de Dados.Outputs[Saída de Conversão de Dados].Columns[Copy of Modo_Disponivel]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\ST_Tb_Modo_Disponivel.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdModoDisponivel]"
+                          dataType="i4"
+                          name="IdModoDisponivel" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\ST_Tb_Modo_Disponivel.Inputs[Entrada de Destino OLE DB].ExternalColumns[Nome_Modo_Disponivel]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="Nome_Modo_Disponivel" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Erro de Destino OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Destino OLE DB"
+                      synchronousInputId="Package\area stage\Indo ST_Tb_Modo_Disponivel\ST_Tb_Modo_Disponivel.Inputs[Entrada de Destino OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Disponivel\ST_Tb_Modo_Disponivel.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Subtituição_Valores"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Coluna Derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;0"
+                  description="Cria novos valores de coluna aplicando expressões a colunas de entrada da transformação. Crie novas colunas ou substitua as existentes. Por exemplo, concatene os valores das colunas 'first name' e 'last name' para formar uma coluna 'full name'."
+                  name="Subtituição_Valores"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Subtituição_Valores.Inputs[Entrada de Coluna Derivada]"
+                      description="Entrada para a Transformação Coluna Derivada"
+                      name="Entrada de Coluna Derivada">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Subtituição_Valores.Inputs[Entrada de Coluna Derivada].Columns[Nome_Modo_Disponivel]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="Nome_Modo_Disponivel"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel.Outputs[Saída de Origem OLE DB].Columns[Nome_Modo_Disponivel]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Subtituição_Valores.Outputs[Saída de Coluna Derivada]"
+                      description="Saída Padrão da Transformação Coluna Derivada"
+                      exclusionGroup="1"
+                      name="Saída de Coluna Derivada"
+                      synchronousInputId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Subtituição_Valores.Inputs[Entrada de Coluna Derivada]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Subtituição_Valores.Outputs[Saída de Coluna Derivada].Columns[Modo_Disponivel]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computação"
+                          errorRowDisposition="FailComponent"
+                          length="9"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Subtituição_Valores.Outputs[Saída de Coluna Derivada].Columns[Modo_Disponivel]"
+                          name="Modo_Disponivel"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Expressão de Coluna Derivada"
+                              name="Expression">([FINDSTRING](#{Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel.Outputs[Saída de Origem OLE DB].Columns[Nome_Modo_Disponivel]},"DUB",1) != 0) ? "Dublado" : "Legendado"</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Expressão Amigável de Coluna Derivada"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(FINDSTRING(Nome_Modo_Disponivel,"DUB",1) != 0) ? "Dublado" : "Legendado"</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Subtituição_Valores.Outputs[Saída de Erro de Coluna Derivada]"
+                      description="Saída de Erro da Transformação Coluna Derivada"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Coluna Derivada"
+                      synchronousInputId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Subtituição_Valores.Inputs[Entrada de Coluna Derivada]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Subtituição_Valores.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Subtituição_Valores.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Subtituição_Valores.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Subtituição_Valores.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+                  description="Origem OLE DB"
+                  name="Tb_Modo_Disponivel"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[Tb_Modo_Disponivel]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="A variável que contém o comando SQL a ser executado."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel.Connections[OleDbConnection]"
+                      connectionManagerID="{AD763C26-6831-447E-9257-EC4E10A4CCAF}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_OLTP]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel.Outputs[Saída de Origem OLE DB]"
+                      name="Saída de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel.Outputs[Saída de Origem OLE DB].Columns[IdModoDisponivel]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel.Outputs[Saída de Origem OLE DB].ExternalColumns[IdModoDisponivel]"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel.Outputs[Saída de Origem OLE DB].Columns[IdModoDisponivel]"
+                          name="IdModoDisponivel"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel.Outputs[Saída de Origem OLE DB].Columns[Nome_Modo_Disponivel]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel.Outputs[Saída de Origem OLE DB].ExternalColumns[Nome_Modo_Disponivel]"
+                          length="30"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel.Outputs[Saída de Origem OLE DB].Columns[Nome_Modo_Disponivel]"
+                          name="Nome_Modo_Disponivel"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel.Outputs[Saída de Origem OLE DB].ExternalColumns[IdModoDisponivel]"
+                          dataType="i4"
+                          name="IdModoDisponivel" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel.Outputs[Saída de Origem OLE DB].ExternalColumns[Nome_Modo_Disponivel]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="Nome_Modo_Disponivel" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel.Outputs[Saída de Erro de Origem OLE DB]"
+                      isErrorOut="true"
+                      name="Saída de Erro de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel.Outputs[Saída de Erro de Origem OLE DB].Columns[IdModoDisponivel]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel.Outputs[Saída de Erro de Origem OLE DB].Columns[IdModoDisponivel]"
+                          name="IdModoDisponivel" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel.Outputs[Saída de Erro de Origem OLE DB].Columns[Nome_Modo_Disponivel]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel.Outputs[Saída de Erro de Origem OLE DB].Columns[Nome_Modo_Disponivel]"
+                          name="Nome_Modo_Disponivel" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\area stage\Indo ST_Tb_Modo_Disponivel.Paths[Saída de Coluna Derivada]"
+                  endId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Conversão de Dados.Inputs[Entrada de Conversão de Dados]"
+                  name="Saída de Coluna Derivada"
+                  startId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Subtituição_Valores.Outputs[Saída de Coluna Derivada]" />
+                <path
+                  refId="Package\area stage\Indo ST_Tb_Modo_Disponivel.Paths[Saída de Conversão de Dados]"
+                  endId="Package\area stage\Indo ST_Tb_Modo_Disponivel\ST_Tb_Modo_Disponivel.Inputs[Entrada de Destino OLE DB]"
+                  name="Saída de Conversão de Dados"
+                  startId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Conversão de Dados.Outputs[Saída de Conversão de Dados]" />
+                <path
+                  refId="Package\area stage\Indo ST_Tb_Modo_Disponivel.Paths[Saída de Origem OLE DB]"
+                  endId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Subtituição_Valores.Inputs[Entrada de Coluna Derivada]"
+                  name="Saída de Origem OLE DB"
+                  startId="Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel.Outputs[Saída de Origem OLE DB]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\area stage\Limpando area stage"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{DCBEA2E0-E668-4173-ACD2-B386C232FA1B}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Limpando area stage"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{1D6CEC87-8244-454A-9B04-42DB1B6285E6}"
+              SQLTask:SqlStatementSource="Truncate table ST_Tb_Modo_Disponivel" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\area stage.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{52B328D8-3FA4-4C17-91F8-E39B9CCB1EA9}"
+          DTS:From="Package\area stage\Limpando area stage"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\area stage\Indo ST_Tb_Modo_Disponivel" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{11D3E197-83A1-43F7-9EFA-B75BB474DA5E}"
+      DTS:From="Package\area stage"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\area DW" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="207.2,41.6"
+          Id="Package\area DW\Indo Dim_Modo_Disponivel"
+          TopLeft="38.914293134456,63.0470613009377" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="283.2,204.8"
+          Size="283.2,248"
+          Id="Package\area DW"
+          TopLeft="412.857149888059,93.2941189554735" />
+        <NodeLayout
+          Size="218.4,41.6"
+          Id="Package\area stage\Indo ST_Tb_Modo_Disponivel"
+          TopLeft="5.5,116.335297388684" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\area stage\Limpando area stage"
+          TopLeft="25.714286152197,28.2470609362975" />
+        <EdgeLayout
+          Id="Package\area stage.PrecedenceConstraints[Constraint]"
+          TopLeft="114.407143076098,69.8470609362971">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.4882364523865"
+              Start="0,0"
+              End="0,38.9882364523865">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.9882364523865" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="228.8,212.8"
+          Size="228.8,256"
+          Id="Package\area stage"
+          TopLeft="134.285716572586,95.5882366347066" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="363.085716572586,220.44117779509">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="49.7714333154722,0"
+              Start="0,0"
+              End="42.2714333154722,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="42.2714333154722,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\area DW\Indo Dim_Modo_Disponivel">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="193.6,41.6"
+          Id="Package\area DW\Indo Dim_Modo_Disponivel\ST_Tb_Modo_Disponivel"
+          TopLeft="256.428575795524,63.4705891254451" />
+        <NodeLayout
+          Size="182.4,41.6"
+          Id="Package\area DW\Indo Dim_Modo_Disponivel\Dim_Modo_Disponivel"
+          TopLeft="256.214289983925,155.38235504322" />
+        <EdgeLayout
+          Id="Package\area DW\Indo Dim_Modo_Disponivel.Paths[Saída de Origem OLE DB]"
+          TopLeft="350.321432889724,105.070589125445">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.3117659177748"
+              Start="0,0"
+              End="0,42.8117659177748">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.8117659177748" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\area DW\Indo Dim_Modo_Disponivel\Dim_Modo_Disponivel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\area DW\Indo Dim_Modo_Disponivel\ST_Tb_Modo_Disponivel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\area stage\Indo ST_Tb_Modo_Disponivel">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\area stage\Indo ST_Tb_Modo_Disponivel\Subtituição_Valores"
+          TopLeft="292.85714784447,152.941178615531" />
+        <NodeLayout
+          Size="193.6,41.6"
+          Id="Package\area stage\Indo ST_Tb_Modo_Disponivel\ST_Tb_Modo_Disponivel"
+          TopLeft="282.142861947722,325.76471045108" />
+        <NodeLayout
+          Size="175.2,41.6"
+          Id="Package\area stage\Indo ST_Tb_Modo_Disponivel\Conversão de Dados"
+          TopLeft="293.57143357092,236.294120960995" />
+        <NodeLayout
+          Size="176,41.6"
+          Id="Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel"
+          TopLeft="284.285719127071,60.4117655531345" />
+        <EdgeLayout
+          Id="Package\area stage\Indo ST_Tb_Modo_Disponivel.Paths[Saída de Origem OLE DB]"
+          TopLeft="375.171433485771,102.011765553134">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.929413062396"
+              Start="0,0"
+              End="0,43.429413062396">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.429413062396" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\area stage\Indo ST_Tb_Modo_Disponivel.Paths[Saída de Conversão de Dados]"
+          TopLeft="380.057147759321,277.894120960995">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.8705894900854"
+              Start="0,0"
+              End="0,40.3705894900854">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.3705894900854" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\area stage\Indo ST_Tb_Modo_Disponivel.Paths[Saída de Coluna Derivada]"
+          TopLeft="379.614290707695,194.54117861553">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.7529423454641"
+              Start="0,0"
+              End="0,34.2529423454641">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.2529423454641" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\area stage\Indo ST_Tb_Modo_Disponivel\ST_Tb_Modo_Disponivel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\area stage\Indo ST_Tb_Modo_Disponivel\Tb_Modo_Disponivel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

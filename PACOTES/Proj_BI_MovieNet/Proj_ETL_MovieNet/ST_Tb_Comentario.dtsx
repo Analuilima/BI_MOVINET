@@ -1,0 +1,919 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/21/2022 5:39:20 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ANALIMA"
+  DTS:CreatorName="ANALIMA\limaa"
+  DTS:DTSID="{F0E21B08-AEA3-4702-A55D-062255D8F503}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.845.0"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="ST_Tb_Comentario"
+  DTS:PackageType="5"
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{6A503FC8-C5E1-4307-B49E-2BA8BF86F6CA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\area DW"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{B4325766-E5C3-465D-A53B-AB9B26823A6B}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="area DW">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\area DW\Indo Dim_Comentario"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarefa Fluxo de Dados"
+          DTS:DTSID="{4E6BE5A3-47B2-46C3-ABD9-9F9B8AD775F3}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Indo Dim_Comentario"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\area DW\Indo Dim_Comentario\Dim_Comentario"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino OLE DB"
+                  name="Dim_Comentario"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[Dim_Comentario]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\area DW\Indo Dim_Comentario\Dim_Comentario.Connections[OleDbConnection]"
+                      connectionManagerID="{D89AFA85-D355-4220-A373-7799801915A7}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_DW]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\area DW\Indo Dim_Comentario\Dim_Comentario.Inputs[Entrada de Destino OLE DB]"
+                      errorOrTruncationOperation="Inserir"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Destino OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Comentario\Dim_Comentario.Inputs[Entrada de Destino OLE DB].Columns[IdComentario]"
+                          cachedDataType="i4"
+                          cachedName="IdComentario"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Comentario\Dim_Comentario.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdComentario]"
+                          lineageId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Origem OLE DB].Columns[IdComentario]" />
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Comentario\Dim_Comentario.Inputs[Entrada de Destino OLE DB].Columns[Comentario]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="Comentario"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Comentario\Dim_Comentario.Inputs[Entrada de Destino OLE DB].ExternalColumns[Comentario]"
+                          lineageId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Origem OLE DB].Columns[Comentario]" />
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Comentario\Dim_Comentario.Inputs[Entrada de Destino OLE DB].Columns[Id_Nota_Venda]"
+                          cachedDataType="i4"
+                          cachedName="Id_Nota_Venda"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Comentario\Dim_Comentario.Inputs[Entrada de Destino OLE DB].ExternalColumns[Id_Nota_Venda]"
+                          lineageId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Origem OLE DB].Columns[Id_Nota_Venda]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Comentario\Dim_Comentario.Inputs[Entrada de Destino OLE DB].ExternalColumns[Idsk]"
+                          dataType="i4"
+                          name="Idsk" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Comentario\Dim_Comentario.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdComentario]"
+                          dataType="i4"
+                          name="IdComentario" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Comentario\Dim_Comentario.Inputs[Entrada de Destino OLE DB].ExternalColumns[Comentario]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="Comentario" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Comentario\Dim_Comentario.Inputs[Entrada de Destino OLE DB].ExternalColumns[Id_Nota_Venda]"
+                          dataType="i4"
+                          name="Id_Nota_Venda" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\area DW\Indo Dim_Comentario\Dim_Comentario.Outputs[Saída de Erro de Destino OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Destino OLE DB"
+                      synchronousInputId="Package\area DW\Indo Dim_Comentario\Dim_Comentario.Inputs[Entrada de Destino OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Comentario\Dim_Comentario.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Comentario\Dim_Comentario.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Comentario\Dim_Comentario.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Comentario\Dim_Comentario.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+                  description="Origem OLE DB"
+                  name="ST_Tb_Comentario"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select sc.idcomentario as IdComentario,
+	   sc.comentario as Comentario,
+	   dn.idsk as Id_Nota_Venda
+	    
+from [MovieNet_STAGE].[dbo].[ST_Tb_Comentario] sc
+
+inner join [MovieNet_DW].[dbo].[Dim_Nota_Venda] dn
+on dn.IdNotaVenda = sc.Id_Nota_Venda
+
+where sc.IdComentario not in (select dc.IdComentario from [MovieNet_DW].[dbo].[Dim_Comentario] dc)</property>
+                    <property
+                      dataType="System.String"
+                      description="A variável que contém o comando SQL a ser executado."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Connections[OleDbConnection]"
+                      connectionManagerID="{1D6CEC87-8244-454A-9B04-42DB1B6285E6}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_STAGE]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Origem OLE DB]"
+                      name="Saída de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Origem OLE DB].Columns[IdComentario]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Origem OLE DB].ExternalColumns[IdComentario]"
+                          lineageId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Origem OLE DB].Columns[IdComentario]"
+                          name="IdComentario"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Origem OLE DB].Columns[Comentario]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Origem OLE DB].ExternalColumns[Comentario]"
+                          length="30"
+                          lineageId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Origem OLE DB].Columns[Comentario]"
+                          name="Comentario"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Origem OLE DB].Columns[Id_Nota_Venda]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Origem OLE DB].ExternalColumns[Id_Nota_Venda]"
+                          lineageId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Origem OLE DB].Columns[Id_Nota_Venda]"
+                          name="Id_Nota_Venda"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Origem OLE DB].ExternalColumns[IdComentario]"
+                          dataType="i4"
+                          name="IdComentario" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Origem OLE DB].ExternalColumns[Comentario]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="Comentario" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Origem OLE DB].ExternalColumns[Id_Nota_Venda]"
+                          dataType="i4"
+                          name="Id_Nota_Venda" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Erro de Origem OLE DB]"
+                      isErrorOut="true"
+                      name="Saída de Erro de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Erro de Origem OLE DB].Columns[IdComentario]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Erro de Origem OLE DB].Columns[IdComentario]"
+                          name="IdComentario" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Erro de Origem OLE DB].Columns[Comentario]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          lineageId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Erro de Origem OLE DB].Columns[Comentario]"
+                          name="Comentario" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Erro de Origem OLE DB].Columns[Id_Nota_Venda]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Erro de Origem OLE DB].Columns[Id_Nota_Venda]"
+                          name="Id_Nota_Venda" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\area DW\Indo Dim_Comentario.Paths[Saída de Origem OLE DB]"
+                  endId="Package\area DW\Indo Dim_Comentario\Dim_Comentario.Inputs[Entrada de Destino OLE DB]"
+                  name="Saída de Origem OLE DB"
+                  startId="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario.Outputs[Saída de Origem OLE DB]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\area stage"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{73E545E8-6D22-4C81-888D-135FD0541C51}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="area stage">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\area stage\Indo ST_Tb_Comentario"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarefa Fluxo de Dados"
+          DTS:DTSID="{6563A4C3-F8E5-47B0-801C-96F27BE5E13C}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Indo ST_Tb_Comentario"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\area stage\Indo ST_Tb_Comentario\ST_Tb_Comentario"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino OLE DB"
+                  name="ST_Tb_Comentario"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[ST_Tb_Comentario]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\area stage\Indo ST_Tb_Comentario\ST_Tb_Comentario.Connections[OleDbConnection]"
+                      connectionManagerID="{1D6CEC87-8244-454A-9B04-42DB1B6285E6}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_STAGE]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\area stage\Indo ST_Tb_Comentario\ST_Tb_Comentario.Inputs[Entrada de Destino OLE DB]"
+                      errorOrTruncationOperation="Inserir"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Destino OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Comentario\ST_Tb_Comentario.Inputs[Entrada de Destino OLE DB].Columns[idcomentario]"
+                          cachedDataType="i4"
+                          cachedName="idcomentario"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Comentario\ST_Tb_Comentario.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdComentario]"
+                          lineageId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Origem OLE DB].Columns[idcomentario]" />
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Comentario\ST_Tb_Comentario.Inputs[Entrada de Destino OLE DB].Columns[comentario]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="200"
+                          cachedName="comentario"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Comentario\ST_Tb_Comentario.Inputs[Entrada de Destino OLE DB].ExternalColumns[Comentario]"
+                          lineageId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Origem OLE DB].Columns[comentario]" />
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Comentario\ST_Tb_Comentario.Inputs[Entrada de Destino OLE DB].Columns[id_nota_venda]"
+                          cachedDataType="i4"
+                          cachedName="id_nota_venda"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Comentario\ST_Tb_Comentario.Inputs[Entrada de Destino OLE DB].ExternalColumns[Id_Nota_Venda]"
+                          lineageId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Origem OLE DB].Columns[id_nota_venda]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Comentario\ST_Tb_Comentario.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdComentario]"
+                          dataType="i4"
+                          name="IdComentario" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Comentario\ST_Tb_Comentario.Inputs[Entrada de Destino OLE DB].ExternalColumns[Comentario]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="Comentario" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Comentario\ST_Tb_Comentario.Inputs[Entrada de Destino OLE DB].ExternalColumns[Id_Nota_Venda]"
+                          dataType="i4"
+                          name="Id_Nota_Venda" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Comentario\ST_Tb_Comentario.Outputs[Saída de Erro de Destino OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Destino OLE DB"
+                      synchronousInputId="Package\area stage\Indo ST_Tb_Comentario\ST_Tb_Comentario.Inputs[Entrada de Destino OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Comentario\ST_Tb_Comentario.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Comentario\ST_Tb_Comentario.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Comentario\ST_Tb_Comentario.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Comentario\ST_Tb_Comentario.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+                  description="Origem OLE DB"
+                  name="Tb_Comentario"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select idcomentario, comentario, id_nota_venda
+from Tb_Comentario</property>
+                    <property
+                      dataType="System.String"
+                      description="A variável que contém o comando SQL a ser executado."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Connections[OleDbConnection]"
+                      connectionManagerID="{AD763C26-6831-447E-9257-EC4E10A4CCAF}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_OLTP]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Origem OLE DB]"
+                      name="Saída de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Origem OLE DB].Columns[idcomentario]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Origem OLE DB].ExternalColumns[idcomentario]"
+                          lineageId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Origem OLE DB].Columns[idcomentario]"
+                          name="idcomentario"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Origem OLE DB].Columns[comentario]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Origem OLE DB].ExternalColumns[comentario]"
+                          length="200"
+                          lineageId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Origem OLE DB].Columns[comentario]"
+                          name="comentario"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Origem OLE DB].Columns[id_nota_venda]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Origem OLE DB].ExternalColumns[id_nota_venda]"
+                          lineageId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Origem OLE DB].Columns[id_nota_venda]"
+                          name="id_nota_venda"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Origem OLE DB].ExternalColumns[idcomentario]"
+                          dataType="i4"
+                          name="idcomentario" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Origem OLE DB].ExternalColumns[comentario]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="comentario" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Origem OLE DB].ExternalColumns[id_nota_venda]"
+                          dataType="i4"
+                          name="id_nota_venda" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Erro de Origem OLE DB]"
+                      isErrorOut="true"
+                      name="Saída de Erro de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Erro de Origem OLE DB].Columns[idcomentario]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Erro de Origem OLE DB].Columns[idcomentario]"
+                          name="idcomentario" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Erro de Origem OLE DB].Columns[comentario]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          lineageId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Erro de Origem OLE DB].Columns[comentario]"
+                          name="comentario" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Erro de Origem OLE DB].Columns[id_nota_venda]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Erro de Origem OLE DB].Columns[id_nota_venda]"
+                          name="id_nota_venda" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\area stage\Indo ST_Tb_Comentario.Paths[Saída de Origem OLE DB]"
+                  endId="Package\area stage\Indo ST_Tb_Comentario\ST_Tb_Comentario.Inputs[Entrada de Destino OLE DB]"
+                  name="Saída de Origem OLE DB"
+                  startId="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario.Outputs[Saída de Origem OLE DB]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\area stage\Limpando area stage"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{C63D215F-A48A-4451-B687-1414D995B1DE}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Limpando area stage"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{1D6CEC87-8244-454A-9B04-42DB1B6285E6}"
+              SQLTask:SqlStatementSource="Truncate table ST_Tb_Comentario" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\area stage.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{00E4A2FC-F117-43FE-83DD-E05ED4A1426D}"
+          DTS:From="Package\area stage\Limpando area stage"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\area stage\Indo ST_Tb_Comentario" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{625055AA-0B06-4AC2-B633-D343F2ABFC7A}"
+      DTS:From="Package\area stage"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\area DW" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="181.6,41.6"
+          Id="Package\area DW\Indo Dim_Comentario"
+          TopLeft="27.3428645022062,99.8705909486461" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="256.8,272.8"
+          Size="256.8,316"
+          Id="Package\area DW"
+          TopLeft="405.000006897109,50.470588943125" />
+        <NodeLayout
+          Size="193.6,41.6"
+          Id="Package\area stage\Indo ST_Tb_Comentario"
+          TopLeft="8.77142982434243,125.000003099441" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\area stage\Limpando area stage"
+          TopLeft="18.0571442681914,37.0588253955115" />
+        <EdgeLayout
+          Id="Package\area stage.PrecedenceConstraints[Constraint]"
+          TopLeft="106.014287046267,78.6588253955115">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.3411777039299"
+              Start="0,0"
+              End="0,38.8411777039299">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.8411777039299" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="210.4,262.4"
+          Size="210.4,305.6"
+          Id="Package\area stage"
+          TopLeft="102.14285888234,53.5294125154356" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="312.54285888234,207.40000072928">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="92.4571480147694,0"
+              Start="0,0"
+              End="84.9571480147694,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="84.9571480147694,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\area DW\Indo Dim_Comentario">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario"
+          TopLeft="439,65" />
+        <NodeLayout
+          Size="156.8,41.6"
+          Id="Package\area DW\Indo Dim_Comentario\Dim_Comentario"
+          TopLeft="444,159" />
+        <EdgeLayout
+          Id="Package\area DW\Indo Dim_Comentario.Paths[Saída de Origem OLE DB]"
+          TopLeft="522.7,106.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.4"
+              Start="0,0"
+              End="0,44.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\area DW\Indo Dim_Comentario\Dim_Comentario">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\area DW\Indo Dim_Comentario\ST_Tb_Comentario">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\area stage\Indo ST_Tb_Comentario">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario"
+          TopLeft="285.000004853521,59.6470596600569" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\area stage\Indo ST_Tb_Comentario\ST_Tb_Comentario"
+          TopLeft="275.714290409672,143.764707898599" />
+        <EdgeLayout
+          Id="Package\area stage\Indo ST_Tb_Comentario.Paths[Saída de Origem OLE DB]"
+          TopLeft="359.957147631596,101.247059660057">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.5176482385421"
+              Start="0,0"
+              End="0,35.0176482385421">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.0176482385421" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\area stage\Indo ST_Tb_Comentario\ST_Tb_Comentario">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\area stage\Indo ST_Tb_Comentario\Tb_Comentario">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,865 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/21/2022 5:21:55 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ANALIMA"
+  DTS:CreatorName="ANALIMA\limaa"
+  DTS:DTSID="{03BEFB54-8389-485B-99C2-77C122A4CDBD}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.845.0"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="ST_Tb_Modo_Pagamento"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{9AF9C791-E8DA-465F-B794-25D906125585}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\area DW"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{834D0F38-B6EC-4704-8706-C3487DC0C3D4}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="area DW">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\area DW\Indo Dim_Modo_Pagamento"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarefa Fluxo de Dados"
+          DTS:DTSID="{B92C2789-AA14-4C35-9A43-9FEDCFD079E2}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Indo Dim_Modo_Pagamento"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\area DW\Indo Dim_Modo_Pagamento\Dim_Modo_Pagamento"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino OLE DB"
+                  name="Dim_Modo_Pagamento"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[Dim_Modo_Pagamento]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\area DW\Indo Dim_Modo_Pagamento\Dim_Modo_Pagamento.Connections[OleDbConnection]"
+                      connectionManagerID="{D89AFA85-D355-4220-A373-7799801915A7}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_DW]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\area DW\Indo Dim_Modo_Pagamento\Dim_Modo_Pagamento.Inputs[Entrada de Destino OLE DB]"
+                      errorOrTruncationOperation="Inserir"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Destino OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Pagamento\Dim_Modo_Pagamento.Inputs[Entrada de Destino OLE DB].Columns[IdModoPagamento]"
+                          cachedDataType="i4"
+                          cachedName="IdModoPagamento"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Modo_Pagamento\Dim_Modo_Pagamento.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdModoPagamento]"
+                          lineageId="Package\area DW\Indo Dim_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Origem OLE DB].Columns[IdModoPagamento]" />
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Pagamento\Dim_Modo_Pagamento.Inputs[Entrada de Destino OLE DB].Columns[Nome_Pagamento]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="Nome_Pagamento"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Modo_Pagamento\Dim_Modo_Pagamento.Inputs[Entrada de Destino OLE DB].ExternalColumns[Nome_Pagamento]"
+                          lineageId="Package\area DW\Indo Dim_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Origem OLE DB].Columns[Nome_Pagamento]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Modo_Pagamento\Dim_Modo_Pagamento.Inputs[Entrada de Destino OLE DB].ExternalColumns[Idsk]"
+                          dataType="i4"
+                          name="Idsk" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Modo_Pagamento\Dim_Modo_Pagamento.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdModoPagamento]"
+                          dataType="i4"
+                          name="IdModoPagamento" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Modo_Pagamento\Dim_Modo_Pagamento.Inputs[Entrada de Destino OLE DB].ExternalColumns[Nome_Pagamento]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="Nome_Pagamento" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\area DW\Indo Dim_Modo_Pagamento\Dim_Modo_Pagamento.Outputs[Saída de Erro de Destino OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Destino OLE DB"
+                      synchronousInputId="Package\area DW\Indo Dim_Modo_Pagamento\Dim_Modo_Pagamento.Inputs[Entrada de Destino OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Pagamento\Dim_Modo_Pagamento.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Modo_Pagamento\Dim_Modo_Pagamento.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Pagamento\Dim_Modo_Pagamento.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Modo_Pagamento\Dim_Modo_Pagamento.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\area DW\Indo Dim_Modo_Pagamento\ST_Tb_Modo_Pagamento"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+                  description="Origem OLE DB"
+                  name="ST_Tb_Modo_Pagamento"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[ST_Tb_Modo_Pagamento]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT IdModoPagamento, Nome_Pagamento
+FROM ST_Tb_Modo_Pagamento
+WHERE IdModoPagamento
+		NOT IN(SELECT idmodopagamento
+				FROM [MovieNet_DW].[dbo].[Dim_Modo_Pagamento])</property>
+                    <property
+                      dataType="System.String"
+                      description="A variável que contém o comando SQL a ser executado."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\area DW\Indo Dim_Modo_Pagamento\ST_Tb_Modo_Pagamento.Connections[OleDbConnection]"
+                      connectionManagerID="{1D6CEC87-8244-454A-9B04-42DB1B6285E6}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_STAGE]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\area DW\Indo Dim_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Origem OLE DB]"
+                      name="Saída de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Origem OLE DB].Columns[IdModoPagamento]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Origem OLE DB].ExternalColumns[IdModoPagamento]"
+                          lineageId="Package\area DW\Indo Dim_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Origem OLE DB].Columns[IdModoPagamento]"
+                          name="IdModoPagamento"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Origem OLE DB].Columns[Nome_Pagamento]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Origem OLE DB].ExternalColumns[Nome_Pagamento]"
+                          length="20"
+                          lineageId="Package\area DW\Indo Dim_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Origem OLE DB].Columns[Nome_Pagamento]"
+                          name="Nome_Pagamento"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Origem OLE DB].ExternalColumns[IdModoPagamento]"
+                          dataType="i4"
+                          name="IdModoPagamento" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Origem OLE DB].ExternalColumns[Nome_Pagamento]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="Nome_Pagamento" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\area DW\Indo Dim_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Erro de Origem OLE DB]"
+                      isErrorOut="true"
+                      name="Saída de Erro de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Erro de Origem OLE DB].Columns[IdModoPagamento]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Erro de Origem OLE DB].Columns[IdModoPagamento]"
+                          name="IdModoPagamento" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Erro de Origem OLE DB].Columns[Nome_Pagamento]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\area DW\Indo Dim_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Erro de Origem OLE DB].Columns[Nome_Pagamento]"
+                          name="Nome_Pagamento" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\area DW\Indo Dim_Modo_Pagamento.Paths[Saída de Origem OLE DB]"
+                  endId="Package\area DW\Indo Dim_Modo_Pagamento\Dim_Modo_Pagamento.Inputs[Entrada de Destino OLE DB]"
+                  name="Saída de Origem OLE DB"
+                  startId="Package\area DW\Indo Dim_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Origem OLE DB]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\area stage"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{A93A04AF-8BE7-4847-BEF9-853BECFC1DAB}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="area stage">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\area stage\Indo ST_Tb_Modo_Pagamento"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarefa Fluxo de Dados"
+          DTS:DTSID="{EFFB3B0A-172F-44AD-87FD-0ACEEBB71C65}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Indo ST_Tb_Modo_Pagamento"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\area stage\Indo ST_Tb_Modo_Pagamento\ST_Tb_Modo_Pagamento"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino OLE DB"
+                  name="ST_Tb_Modo_Pagamento"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[ST_Tb_Modo_Pagamento]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\area stage\Indo ST_Tb_Modo_Pagamento\ST_Tb_Modo_Pagamento.Connections[OleDbConnection]"
+                      connectionManagerID="{1D6CEC87-8244-454A-9B04-42DB1B6285E6}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_STAGE]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\area stage\Indo ST_Tb_Modo_Pagamento\ST_Tb_Modo_Pagamento.Inputs[Entrada de Destino OLE DB]"
+                      errorOrTruncationOperation="Inserir"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Destino OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Pagamento\ST_Tb_Modo_Pagamento.Inputs[Entrada de Destino OLE DB].Columns[idmodopagamento]"
+                          cachedDataType="i4"
+                          cachedName="idmodopagamento"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Modo_Pagamento\ST_Tb_Modo_Pagamento.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdModoPagamento]"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Pagamento\Tb_Modo_Pagamento.Outputs[Saída de Origem OLE DB].Columns[idmodopagamento]" />
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Pagamento\ST_Tb_Modo_Pagamento.Inputs[Entrada de Destino OLE DB].Columns[nome_pagamento]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="nome_pagamento"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Modo_Pagamento\ST_Tb_Modo_Pagamento.Inputs[Entrada de Destino OLE DB].ExternalColumns[Nome_Pagamento]"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Pagamento\Tb_Modo_Pagamento.Outputs[Saída de Origem OLE DB].Columns[nome_pagamento]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Pagamento\ST_Tb_Modo_Pagamento.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdModoPagamento]"
+                          dataType="i4"
+                          name="IdModoPagamento" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Pagamento\ST_Tb_Modo_Pagamento.Inputs[Entrada de Destino OLE DB].ExternalColumns[Nome_Pagamento]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="Nome_Pagamento" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Erro de Destino OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Destino OLE DB"
+                      synchronousInputId="Package\area stage\Indo ST_Tb_Modo_Pagamento\ST_Tb_Modo_Pagamento.Inputs[Entrada de Destino OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Pagamento\ST_Tb_Modo_Pagamento.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\area stage\Indo ST_Tb_Modo_Pagamento\Tb_Modo_Pagamento"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+                  description="Origem OLE DB"
+                  name="Tb_Modo_Pagamento"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select idmodopagamento, nome_pagamento
+from Tb_Modo_Pagamento</property>
+                    <property
+                      dataType="System.String"
+                      description="A variável que contém o comando SQL a ser executado."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\area stage\Indo ST_Tb_Modo_Pagamento\Tb_Modo_Pagamento.Connections[OleDbConnection]"
+                      connectionManagerID="{AD763C26-6831-447E-9257-EC4E10A4CCAF}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_OLTP]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Modo_Pagamento\Tb_Modo_Pagamento.Outputs[Saída de Origem OLE DB]"
+                      name="Saída de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Pagamento\Tb_Modo_Pagamento.Outputs[Saída de Origem OLE DB].Columns[idmodopagamento]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Modo_Pagamento\Tb_Modo_Pagamento.Outputs[Saída de Origem OLE DB].ExternalColumns[idmodopagamento]"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Pagamento\Tb_Modo_Pagamento.Outputs[Saída de Origem OLE DB].Columns[idmodopagamento]"
+                          name="idmodopagamento"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Pagamento\Tb_Modo_Pagamento.Outputs[Saída de Origem OLE DB].Columns[nome_pagamento]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Modo_Pagamento\Tb_Modo_Pagamento.Outputs[Saída de Origem OLE DB].ExternalColumns[nome_pagamento]"
+                          length="20"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Pagamento\Tb_Modo_Pagamento.Outputs[Saída de Origem OLE DB].Columns[nome_pagamento]"
+                          name="nome_pagamento"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Pagamento\Tb_Modo_Pagamento.Outputs[Saída de Origem OLE DB].ExternalColumns[idmodopagamento]"
+                          dataType="i4"
+                          name="idmodopagamento" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Pagamento\Tb_Modo_Pagamento.Outputs[Saída de Origem OLE DB].ExternalColumns[nome_pagamento]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="nome_pagamento" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Modo_Pagamento\Tb_Modo_Pagamento.Outputs[Saída de Erro de Origem OLE DB]"
+                      isErrorOut="true"
+                      name="Saída de Erro de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Pagamento\Tb_Modo_Pagamento.Outputs[Saída de Erro de Origem OLE DB].Columns[idmodopagamento]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Pagamento\Tb_Modo_Pagamento.Outputs[Saída de Erro de Origem OLE DB].Columns[idmodopagamento]"
+                          name="idmodopagamento" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Pagamento\Tb_Modo_Pagamento.Outputs[Saída de Erro de Origem OLE DB].Columns[nome_pagamento]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Pagamento\Tb_Modo_Pagamento.Outputs[Saída de Erro de Origem OLE DB].Columns[nome_pagamento]"
+                          name="nome_pagamento" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Pagamento\Tb_Modo_Pagamento.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Pagamento\Tb_Modo_Pagamento.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Pagamento\Tb_Modo_Pagamento.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Pagamento\Tb_Modo_Pagamento.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\area stage\Indo ST_Tb_Modo_Pagamento.Paths[Saída de Origem OLE DB]"
+                  endId="Package\area stage\Indo ST_Tb_Modo_Pagamento\ST_Tb_Modo_Pagamento.Inputs[Entrada de Destino OLE DB]"
+                  name="Saída de Origem OLE DB"
+                  startId="Package\area stage\Indo ST_Tb_Modo_Pagamento\Tb_Modo_Pagamento.Outputs[Saída de Origem OLE DB]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\area stage\Limpando area stage"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{8F97DE0A-B588-429B-A692-D302268D253F}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Limpando area stage"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{1D6CEC87-8244-454A-9B04-42DB1B6285E6}"
+              SQLTask:SqlStatementSource="Truncate table ST_Tb_Modo_Pagamento" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\area stage.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{BE3F1DF1-EE3B-48D3-87BD-453243CA46BD}"
+          DTS:From="Package\area stage\Limpando area stage"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\area stage\Indo ST_Tb_Modo_Pagamento" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{2D6757D5-4399-4028-A1EF-CB9B0938299C}"
+      DTS:From="Package\area stage"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\area DW" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="212,41.6"
+          Id="Package\area DW\Indo Dim_Modo_Pagamento"
+          TopLeft="12.0285790312049,62.1058848732483" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="246.4,218.4"
+          Size="246.4,261.6"
+          Id="Package\area DW"
+          TopLeft="434.285721681556,74.1764716285323" />
+        <NodeLayout
+          Size="224,41.6"
+          Id="Package\area stage\Indo ST_Tb_Modo_Pagamento"
+          TopLeft="5.5,116.811768105616" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\area stage\Limpando area stage"
+          TopLeft="22.6428574347981,21.2235314709092" />
+        <EdgeLayout
+          Id="Package\area stage.PrecedenceConstraints[Constraint]"
+          TopLeft="114.271428717399,62.8235314709092">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53.9882366347066"
+              Start="0,0"
+              End="0,46.4882366347066">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.4882366347066" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="234.4,213.6"
+          Size="234.4,256.8"
+          Id="Package\area stage"
+          TopLeft="157.857145545434,74.9411775216099" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="392.257145545434,204.158824575071">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="42.028576136122,0"
+              Start="0,0"
+              End="34.528576136122,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="34.528576136122,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\area DW\Indo Dim_Modo_Pagamento">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="198.4,41.6"
+          Id="Package\area DW\Indo Dim_Modo_Pagamento\ST_Tb_Modo_Pagamento"
+          TopLeft="305.000005194119,55.058824301591" />
+        <NodeLayout
+          Size="187.2,41.6"
+          Id="Package\area DW\Indo Dim_Modo_Pagamento\Dim_Modo_Pagamento"
+          TopLeft="310.000005279269,127.705884143968" />
+        <EdgeLayout
+          Id="Package\area DW\Indo Dim_Modo_Pagamento.Paths[Saída de Origem OLE DB]"
+          TopLeft="403.900005236694,96.658824301591">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.0470598423769"
+              Start="0,0"
+              End="0,23.5470598423769">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5470598423769" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\area DW\Indo Dim_Modo_Pagamento\Dim_Modo_Pagamento">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\area DW\Indo Dim_Modo_Pagamento\ST_Tb_Modo_Pagamento">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\area stage\Indo ST_Tb_Modo_Pagamento">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="180.8,41.6"
+          Id="Package\area stage\Indo ST_Tb_Modo_Pagamento\Tb_Modo_Pagamento"
+          TopLeft="285.000004853521,78.0000010939205" />
+        <NodeLayout
+          Size="198.4,41.6"
+          Id="Package\area stage\Indo ST_Tb_Modo_Pagamento\ST_Tb_Modo_Pagamento"
+          TopLeft="275.714290409672,175.117649514782" />
+        <EdgeLayout
+          Id="Package\area stage\Indo ST_Tb_Modo_Pagamento.Paths[Saída de Origem OLE DB]"
+          TopLeft="375.157147631597,119.600001093921">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55.5176484208618"
+              Start="0,0"
+              End="0,48.0176484208618">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.0176484208618" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\area stage\Indo ST_Tb_Modo_Pagamento\ST_Tb_Modo_Pagamento">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\area stage\Indo ST_Tb_Modo_Pagamento\Tb_Modo_Pagamento">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

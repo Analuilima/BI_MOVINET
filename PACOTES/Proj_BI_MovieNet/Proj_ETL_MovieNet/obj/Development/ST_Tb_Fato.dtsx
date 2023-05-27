@@ -1,0 +1,816 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/21/2022 5:42:02 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ANALIMA"
+  DTS:CreatorName="ANALIMA\limaa"
+  DTS:DTSID="{D067A156-7FAE-4370-A7B4-9C7BDDA877B0}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.845.0"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="ST_Tb_Fato"
+  DTS:PackageType="5"
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{FAE91462-B4B2-48C4-82D1-1FA68FC1C973}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\area DW"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{7C23B1D5-F2AD-43F6-8DA6-1B10237AD684}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="area DW">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\area DW\Preenchendo Fato_Venda"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{3CFDA67A-E8DD-4215-A253-96DA22839BA7}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Preenchendo Fato_Venda"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D89AFA85-D355-4220-A373-7799801915A7}"
+              SQLTask:SqlStatementSource="Exec [dbo].[Carga_Fato_Venda]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\area stage"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{1895967E-694B-4A50-BD95-3857F0A61288}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="area stage">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\area stage\Indo ST_Tb_Fato"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarefa Fluxo de Dados"
+          DTS:DTSID="{F47C9B2C-62F6-420B-BD76-62A949537DFC}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Indo ST_Tb_Fato"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+                  description="Origem OLE DB"
+                  name="Relatorio_venda_Fato_item"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[Relatorio_Venda_Fato_Item]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">Select n.IdNotaVenda as IdNotaVenda,
+	   n.Data_Pedido as Data_Pedido,
+	   n.Id_Cliente as IdCliente,
+	   i.Id_Produto as IdProduto,
+	   i.Qtde_Produtos as Qtde_Produtos,
+	   i.Total as Subtotal,
+	   n.Desconto as Desconto,
+	  (i.total - n.Desconto) as Total_Item,
+	   p.Id_Modo_Compra as IdModoCompra,
+	   n.Id_Modo_Pagamento as IdModoPagamento,
+	   n.Id_Bandeira as IdBandeira
+From Tb_Nota_Venda n
+Inner join Tb_Item_Venda i
+On n.IdNotaVenda = i.Id_Nota_Venda
+inner join Tb_Produto p
+On p.IdProduto = i.Id_Produto</property>
+                    <property
+                      dataType="System.String"
+                      description="A variável que contém o comando SQL a ser executado."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Connections[OleDbConnection]"
+                      connectionManagerID="{AD763C26-6831-447E-9257-EC4E10A4CCAF}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_OLTP]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB]"
+                      name="Saída de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[IdNotaVenda]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].ExternalColumns[IdNotaVenda]"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[IdNotaVenda]"
+                          name="IdNotaVenda"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[Data_Pedido]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].ExternalColumns[Data_Pedido]"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[Data_Pedido]"
+                          name="Data_Pedido"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[IdCliente]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].ExternalColumns[IdCliente]"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[IdCliente]"
+                          name="IdCliente"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[IdProduto]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].ExternalColumns[IdProduto]"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[IdProduto]"
+                          name="IdProduto"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[Qtde_Produtos]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].ExternalColumns[Qtde_Produtos]"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[Qtde_Produtos]"
+                          name="Qtde_Produtos"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[Subtotal]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].ExternalColumns[Subtotal]"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[Subtotal]"
+                          name="Subtotal"
+                          precision="10"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[Desconto]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].ExternalColumns[Desconto]"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[Desconto]"
+                          name="Desconto"
+                          precision="10"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[Total_Item]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].ExternalColumns[Total_Item]"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[Total_Item]"
+                          name="Total_Item"
+                          precision="11"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[IdModoCompra]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].ExternalColumns[IdModoCompra]"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[IdModoCompra]"
+                          name="IdModoCompra"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[IdModoPagamento]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].ExternalColumns[IdModoPagamento]"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[IdModoPagamento]"
+                          name="IdModoPagamento"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[IdBandeira]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].ExternalColumns[IdBandeira]"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[IdBandeira]"
+                          name="IdBandeira"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].ExternalColumns[IdNotaVenda]"
+                          dataType="i4"
+                          name="IdNotaVenda" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].ExternalColumns[Data_Pedido]"
+                          dataType="dbDate"
+                          name="Data_Pedido" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].ExternalColumns[IdCliente]"
+                          dataType="i4"
+                          name="IdCliente" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].ExternalColumns[IdProduto]"
+                          dataType="i4"
+                          name="IdProduto" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].ExternalColumns[Qtde_Produtos]"
+                          dataType="i4"
+                          name="Qtde_Produtos" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].ExternalColumns[Subtotal]"
+                          dataType="numeric"
+                          name="Subtotal"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].ExternalColumns[Desconto]"
+                          dataType="numeric"
+                          name="Desconto"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].ExternalColumns[Total_Item]"
+                          dataType="numeric"
+                          name="Total_Item"
+                          precision="11"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].ExternalColumns[IdModoCompra]"
+                          dataType="i4"
+                          name="IdModoCompra" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].ExternalColumns[IdModoPagamento]"
+                          dataType="i4"
+                          name="IdModoPagamento" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].ExternalColumns[IdBandeira]"
+                          dataType="i4"
+                          name="IdBandeira" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB]"
+                      isErrorOut="true"
+                      name="Saída de Erro de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[IdNotaVenda]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[IdNotaVenda]"
+                          name="IdNotaVenda" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[Data_Pedido]"
+                          dataType="dbDate"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[Data_Pedido]"
+                          name="Data_Pedido" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[IdCliente]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[IdCliente]"
+                          name="IdCliente" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[IdProduto]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[IdProduto]"
+                          name="IdProduto" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[Qtde_Produtos]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[Qtde_Produtos]"
+                          name="Qtde_Produtos" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[Subtotal]"
+                          dataType="numeric"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[Subtotal]"
+                          name="Subtotal"
+                          precision="10"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[Desconto]"
+                          dataType="numeric"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[Desconto]"
+                          name="Desconto"
+                          precision="10"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[Total_Item]"
+                          dataType="numeric"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[Total_Item]"
+                          name="Total_Item"
+                          precision="11"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[IdModoCompra]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[IdModoCompra]"
+                          name="IdModoCompra" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[IdModoPagamento]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[IdModoPagamento]"
+                          name="IdModoPagamento" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[IdBandeira]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[IdBandeira]"
+                          name="IdBandeira" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino OLE DB"
+                  name="ST_Tb_Fato"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[ST_Tb_Fato]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Connections[OleDbConnection]"
+                      connectionManagerID="{1D6CEC87-8244-454A-9B04-42DB1B6285E6}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_STAGE]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB]"
+                      errorOrTruncationOperation="Inserir"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Destino OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].Columns[IdNotaVenda]"
+                          cachedDataType="i4"
+                          cachedName="IdNotaVenda"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdNotaVenda]"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[IdNotaVenda]" />
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].Columns[Data_Pedido]"
+                          cachedDataType="dbDate"
+                          cachedName="Data_Pedido"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].ExternalColumns[Data_Pedido]"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[Data_Pedido]" />
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].Columns[IdCliente]"
+                          cachedDataType="i4"
+                          cachedName="IdCliente"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdCliente]"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[IdCliente]" />
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].Columns[IdProduto]"
+                          cachedDataType="i4"
+                          cachedName="IdProduto"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdProduto]"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[IdProduto]" />
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].Columns[Qtde_Produtos]"
+                          cachedDataType="i4"
+                          cachedName="Qtde_Produtos"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].ExternalColumns[Qtde_Produtos]"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[Qtde_Produtos]" />
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].Columns[Subtotal]"
+                          cachedDataType="numeric"
+                          cachedName="Subtotal"
+                          cachedPrecision="10"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].ExternalColumns[Subtotal]"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[Subtotal]" />
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].Columns[Desconto]"
+                          cachedDataType="numeric"
+                          cachedName="Desconto"
+                          cachedPrecision="10"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].ExternalColumns[Desconto]"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[Desconto]" />
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].Columns[Total_Item]"
+                          cachedDataType="numeric"
+                          cachedName="Total_Item"
+                          cachedPrecision="11"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].ExternalColumns[Total_Item]"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[Total_Item]" />
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].Columns[IdModoCompra]"
+                          cachedDataType="i4"
+                          cachedName="IdModoCompra"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdModoCompra]"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[IdModoCompra]" />
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].Columns[IdModoPagamento]"
+                          cachedDataType="i4"
+                          cachedName="IdModoPagamento"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdModoPagamento]"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[IdModoPagamento]" />
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].Columns[IdBandeira]"
+                          cachedDataType="i4"
+                          cachedName="IdBandeira"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdBandeira]"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB].Columns[IdBandeira]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdNotaVenda]"
+                          dataType="i4"
+                          name="IdNotaVenda" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].ExternalColumns[Data_Pedido]"
+                          dataType="dbDate"
+                          name="Data_Pedido" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdCliente]"
+                          dataType="i4"
+                          name="IdCliente" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdProduto]"
+                          dataType="i4"
+                          name="IdProduto" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].ExternalColumns[Qtde_Produtos]"
+                          dataType="i4"
+                          name="Qtde_Produtos" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].ExternalColumns[Subtotal]"
+                          dataType="numeric"
+                          name="Subtotal"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].ExternalColumns[Desconto]"
+                          dataType="numeric"
+                          name="Desconto"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].ExternalColumns[Total_Item]"
+                          dataType="numeric"
+                          name="Total_Item"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdModoCompra]"
+                          dataType="i4"
+                          name="IdModoCompra" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdModoPagamento]"
+                          dataType="i4"
+                          name="IdModoPagamento" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdBandeira]"
+                          dataType="i4"
+                          name="IdBandeira" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Outputs[Saída de Erro de Destino OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Destino OLE DB"
+                      synchronousInputId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\area stage\Indo ST_Tb_Fato.Paths[Saída de Origem OLE DB]"
+                  endId="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato.Inputs[Entrada de Destino OLE DB]"
+                  name="Saída de Origem OLE DB"
+                  startId="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item.Outputs[Saída de Origem OLE DB]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\area stage\Limpando area stage"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{780150BC-22BC-4F1B-B638-54CEE293DCDD}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Limpando area stage"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{1D6CEC87-8244-454A-9B04-42DB1B6285E6}"
+              SQLTask:SqlStatementSource="Truncate table ST_Tb_Fato" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\area stage.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{23CC3206-4F7D-4B39-9F77-33CFBAD54EAD}"
+          DTS:From="Package\area stage\Limpando area stage"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\area stage\Indo ST_Tb_Fato" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{22963368-580C-450A-952C-1707A2580ED8}"
+      DTS:From="Package\area stage"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\area DW" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="198.4,41.6"
+          Id="Package\area DW\Preenchendo Fato_Venda"
+          TopLeft="6.22857758366348,79.3529438040248" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="216.8,220"
+          Size="216.8,263.2"
+          Id="Package\area DW"
+          TopLeft="355.000006045614,65.0000009116005" />
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\area stage\Indo ST_Tb_Fato"
+          TopLeft="21.057144183042,131.976473998694" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\area stage\Limpando area stage"
+          TopLeft="16.057144097893,50.9176493324623" />
+        <EdgeLayout
+          Id="Package\area stage.PrecedenceConstraints[Constraint]"
+          TopLeft="102.757144140468,92.5176493324623">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.4588246662314"
+              Start="0,0"
+              End="0,31.9588246662314">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.9588246662314" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="204.8,224"
+          Size="204.8,267.2"
+          Id="Package\area stage"
+          TopLeft="87.8571443533411,61.9411773392899" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="292.657144353341,196.070589125445">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="62.3428616922729,0"
+              Start="0,0"
+              End="54.8428616922729,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="54.8428616922729,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\area stage\Indo ST_Tb_Fato">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="207.2,41.6"
+          Id="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item"
+          TopLeft="302.14286228832,76.4705893077652" />
+        <NodeLayout
+          Size="135.2,41.6"
+          Id="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato"
+          TopLeft="338.571434337266,173.588237728627" />
+        <EdgeLayout
+          Id="Package\area stage\Indo ST_Tb_Fato.Paths[Saída de Origem OLE DB]"
+          TopLeft="405.957148312793,118.070589307765">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55.5176484208618"
+              Start="0,0"
+              End="0,48.0176484208618">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.0176484208618" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\area stage\Indo ST_Tb_Fato\Relatorio_venda_Fato_item">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\area stage\Indo ST_Tb_Fato\ST_Tb_Fato">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

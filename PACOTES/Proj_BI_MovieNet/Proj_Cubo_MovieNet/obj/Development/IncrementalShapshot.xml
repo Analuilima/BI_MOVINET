@@ -1,0 +1,124 @@
+﻿<DeploymentSnapshot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Target>
+    <Database>Proj_Cubo_MovieNet</Database>
+    <Server>localhost</Server>
+    <ConnectionString>Data Source=localhost;Timeout=0</ConnectionString>
+  </Target>
+  <Options>
+    <TransactionalDeployment>false</TransactionalDeployment>
+    <PartitionDeployment>DeployPartitions</PartitionDeployment>
+    <RoleDeployment>DeployRolesRetainMembers</RoleDeployment>
+    <ProcessingOption>DoNotProcess</ProcessingOption>
+    <OutputScript></OutputScript>
+    <ImpactAnalysisFile></ImpactAnalysisFile>
+    <ConfigurationSettingsDeployment>Deploy</ConfigurationSettingsDeployment>
+    <OptimizationSettingsDeployment>Deploy</OptimizationSettingsDeployment>
+    <WriteBackTableCreation>UseExisting</WriteBackTableCreation>
+  </Options>
+  <Snapshot>
+    <ObjectSnapshots>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.RelationalDataSource</Type>
+        <TimeStamp>v1Mq9dlEv7NqqSvkkwiHLSVNpwk=23/01/2023 17:23:2823/01/2023 15:43:09</TimeStamp>
+        <ID>
+          <String>DS_MovieNet</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.DataSourceView</Type>
+        <TimeStamp>m4+VKJkyeSNUFEhLfPl8sNQSsoU=23/01/2023 16:43:2323/01/2023 15:43:52</TimeStamp>
+        <ID>
+          <String>DSV_MovieNet</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>gpvIBDeFrp2mL/aNhISK0LMTNEs=23/01/2023 17:49:4723/01/2023 17:06:53</TimeStamp>
+        <ID>
+          <String>Dim_Bandeira_Cartao</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>2Ltk+ww579uam1c739VPgF0zjjI=23/01/2023 17:48:2923/01/2023 17:10:08</TimeStamp>
+        <ID>
+          <String>Dim_Comentario</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>iBoGVi3qyGlZY6B0EeObp8ltU3o=23/01/2023 17:48:4323/01/2023 17:10:34</TimeStamp>
+        <ID>
+          <String>Dim_Email_Promocional</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>OarOFfmQxEPXHIx/khmGRCv1rIk=23/01/2023 17:48:1423/01/2023 17:11:03</TimeStamp>
+        <ID>
+          <String>Dim_Genero_Filme</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>W1tO4/J3NapCz0R43rRSvyAE1T8=23/01/2023 17:48:0023/01/2023 17:11:25</TimeStamp>
+        <ID>
+          <String>Dim_Modo_Compra</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>a3CcmBWRECgf7Iz7lqi7sDCwPOc=23/01/2023 17:47:4823/01/2023 17:14:31</TimeStamp>
+        <ID>
+          <String>Dim_Modo_Pagamento</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>VqWp/5xZyUUdr1QRfeYWSJ2tWco=23/01/2023 17:15:1123/01/2023 17:15:11</TimeStamp>
+        <ID>
+          <String>Dim_Nota_Venda</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>k1IlfgatUbT36j9m7MuK23m//dA=23/01/2023 17:47:2623/01/2023 17:15:55</TimeStamp>
+        <ID>
+          <String>Dim_Produto</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>kYx6WLOZ3sd3lopVNP97G2Ubd1o=23/01/2023 17:57:0123/01/2023 17:50:56</TimeStamp>
+        <ID>
+          <String>Dim Tempo</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>NdS96Fmb4k5sMAvg1TncOkX2VVA=23/01/2023 17:59:0123/01/2023 17:59:01</TimeStamp>
+        <ID>
+          <String>Dim_Cliente</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Cube</Type>
+        <TimeStamp>EopZK+adzaGa1dnbyyrztOkrlDk=23/01/2023 17:59:0123/01/2023 17:50:561rGGI/LQNcGIZEEeLdUo/nMgUxc=23/01/2023 17:50:5723/01/2023 17:50:56</TimeStamp>
+        <ID>
+          <String>Cubo_MovieNet</String>
+        </ID>
+      </ObjectSnapshot>
+    </ObjectSnapshots>
+    <DatabaseSnapshot>
+      <Type>Microsoft.AnalysisServices.Database</Type>
+      <TimeStamp>KKbJ+niVHtCKsjBbsA7BtBbICtw=23/01/2023 15:27:5523/01/2023 15:27:55</TimeStamp>
+      <ID>
+        <String>Proj_Cubo_MovieNet</String>
+      </ID>
+    </DatabaseSnapshot>
+    <Granularity>Coarse</Granularity>
+  </Snapshot>
+  <AssemblyLocations />
+  <ProcessingComplete>true</ProcessingComplete>
+  <LastDeployed>2023-01-23T20:59:32.5Z</LastDeployed>
+</DeploymentSnapshot>

@@ -1,0 +1,1096 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/21/2022 6:07:16 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ANALIMA"
+  DTS:CreatorName="ANALIMA\limaa"
+  DTS:DTSID="{2F7931A7-E976-4688-96BB-4B71FEE421F9}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.845.0"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="ST_Tb_Modo_Compra"
+  DTS:PackageType="5"
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{305D96CB-EBAA-4732-8828-1898D428CCD3}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\area DW"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{2EB6229E-1A4B-4A37-B881-4F3B5ADFB877}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="area DW">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\area DW\Indo Dim_Modo_Compra"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarefa Fluxo de Dados"
+          DTS:DTSID="{A1D43135-638E-4C5A-A22F-79AFD2109F45}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Indo Dim_Modo_Compra"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\area DW\Indo Dim_Modo_Compra\Dim_Modo_Compra"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino OLE DB"
+                  name="Dim_Modo_Compra"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[Dim_Modo_Compra]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\area DW\Indo Dim_Modo_Compra\Dim_Modo_Compra.Connections[OleDbConnection]"
+                      connectionManagerID="{D89AFA85-D355-4220-A373-7799801915A7}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_DW]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\area DW\Indo Dim_Modo_Compra\Dim_Modo_Compra.Inputs[Entrada de Destino OLE DB]"
+                      errorOrTruncationOperation="Inserir"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Destino OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Compra\Dim_Modo_Compra.Inputs[Entrada de Destino OLE DB].Columns[idmodocompra]"
+                          cachedDataType="i4"
+                          cachedName="idmodocompra"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Modo_Compra\Dim_Modo_Compra.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdModoCompra]"
+                          lineageId="Package\area DW\Indo Dim_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Origem OLE DB].Columns[idmodocompra]" />
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Compra\Dim_Modo_Compra.Inputs[Entrada de Destino OLE DB].Columns[nome_modo_compra]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="15"
+                          cachedName="nome_modo_compra"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Modo_Compra\Dim_Modo_Compra.Inputs[Entrada de Destino OLE DB].ExternalColumns[Nome_Modo_Compra]"
+                          lineageId="Package\area DW\Indo Dim_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Origem OLE DB].Columns[nome_modo_compra]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Modo_Compra\Dim_Modo_Compra.Inputs[Entrada de Destino OLE DB].ExternalColumns[Idsk]"
+                          dataType="i4"
+                          name="Idsk" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Modo_Compra\Dim_Modo_Compra.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdModoCompra]"
+                          dataType="i4"
+                          name="IdModoCompra" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Modo_Compra\Dim_Modo_Compra.Inputs[Entrada de Destino OLE DB].ExternalColumns[Nome_Modo_Compra]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="Nome_Modo_Compra" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\area DW\Indo Dim_Modo_Compra\Dim_Modo_Compra.Outputs[Saída de Erro de Destino OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Destino OLE DB"
+                      synchronousInputId="Package\area DW\Indo Dim_Modo_Compra\Dim_Modo_Compra.Inputs[Entrada de Destino OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Compra\Dim_Modo_Compra.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Modo_Compra\Dim_Modo_Compra.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Compra\Dim_Modo_Compra.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Modo_Compra\Dim_Modo_Compra.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\area DW\Indo Dim_Modo_Compra\ST_Tb_Modo_Compra"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+                  description="Origem OLE DB"
+                  name="ST_Tb_Modo_Compra"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[ST_Tb_Modo_Compra]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT idmodocompra, nome_modo_compra
+FROM ST_Tb_Modo_Compra
+WHERE IdModoCompra
+		NOT IN(SELECT idmodocompra
+				FROM [MovieNet_DW].[dbo].[Dim_Modo_Compra])</property>
+                    <property
+                      dataType="System.String"
+                      description="A variável que contém o comando SQL a ser executado."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\area DW\Indo Dim_Modo_Compra\ST_Tb_Modo_Compra.Connections[OleDbConnection]"
+                      connectionManagerID="{1D6CEC87-8244-454A-9B04-42DB1B6285E6}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_STAGE]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\area DW\Indo Dim_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Origem OLE DB]"
+                      name="Saída de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Origem OLE DB].Columns[idmodocompra]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Origem OLE DB].ExternalColumns[idmodocompra]"
+                          lineageId="Package\area DW\Indo Dim_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Origem OLE DB].Columns[idmodocompra]"
+                          name="idmodocompra"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Origem OLE DB].Columns[nome_modo_compra]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Origem OLE DB].ExternalColumns[nome_modo_compra]"
+                          length="15"
+                          lineageId="Package\area DW\Indo Dim_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Origem OLE DB].Columns[nome_modo_compra]"
+                          name="nome_modo_compra"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Origem OLE DB].ExternalColumns[idmodocompra]"
+                          dataType="i4"
+                          name="idmodocompra" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Origem OLE DB].ExternalColumns[nome_modo_compra]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="nome_modo_compra" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\area DW\Indo Dim_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Erro de Origem OLE DB]"
+                      isErrorOut="true"
+                      name="Saída de Erro de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Erro de Origem OLE DB].Columns[idmodocompra]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Erro de Origem OLE DB].Columns[idmodocompra]"
+                          name="idmodocompra" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Erro de Origem OLE DB].Columns[nome_modo_compra]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          lineageId="Package\area DW\Indo Dim_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Erro de Origem OLE DB].Columns[nome_modo_compra]"
+                          name="nome_modo_compra" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\area DW\Indo Dim_Modo_Compra.Paths[Saída de Origem OLE DB]"
+                  endId="Package\area DW\Indo Dim_Modo_Compra\Dim_Modo_Compra.Inputs[Entrada de Destino OLE DB]"
+                  name="Saída de Origem OLE DB"
+                  startId="Package\area DW\Indo Dim_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Origem OLE DB]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\area stage"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{5F92ACB9-9280-4414-9AE6-7B9C4DCF7838}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="area stage">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\area stage\Indo ST_Tb_Modo_Compra"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarefa Fluxo de Dados"
+          DTS:DTSID="{678A611C-8894-4AE2-B5AF-D88F74E54F4A}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Indo ST_Tb_Modo_Compra"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\area stage\Indo ST_Tb_Modo_Compra\Conversão de Dados"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Conversão de Dados;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;0"
+                  description="Conversão de Dados"
+                  name="Conversão de Dados"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\area stage\Indo ST_Tb_Modo_Compra\Conversão de Dados.Inputs[Entrada de Conversão de Dados]"
+                      name="Entrada de Conversão de Dados">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Compra\Conversão de Dados.Inputs[Entrada de Conversão de Dados].Columns[Modo_Compra]"
+                          cachedDataType="wstr"
+                          cachedLength="8"
+                          cachedName="Modo_Compra"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Compra\Substituicao_valores.Outputs[Saída de Coluna Derivada].Columns[Modo_Compra]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Modo_Compra\Conversão de Dados.Outputs[Saída de Conversão de Dados]"
+                      exclusionGroup="1"
+                      name="Saída de Conversão de Dados"
+                      synchronousInputId="Package\area stage\Indo ST_Tb_Modo_Compra\Conversão de Dados.Inputs[Entrada de Conversão de Dados]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Compra\Conversão de Dados.Outputs[Saída de Conversão de Dados].Columns[Copy of Modo_Compra]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          length="8"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Compra\Conversão de Dados.Outputs[Saída de Conversão de Dados].Columns[Copy of Modo_Compra]"
+                          name="Copy of Modo_Compra"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Especifica a coluna de entrada usada como a origem dois dados para a conversão."
+                              name="SourceInputColumnLineageID">#{Package\area stage\Indo ST_Tb_Modo_Compra\Substituicao_valores.Outputs[Saída de Coluna Derivada].Columns[Modo_Compra]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indica se a coluna usa as rotinas de análise de localidade neutro mais rápidas."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Modo_Compra\Conversão de Dados.Outputs[Saída de Erro de Conversão de Dados]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Conversão de Dados"
+                      synchronousInputId="Package\area stage\Indo ST_Tb_Modo_Compra\Conversão de Dados.Inputs[Entrada de Conversão de Dados]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Compra\Conversão de Dados.Outputs[Saída de Erro de Conversão de Dados].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Compra\Conversão de Dados.Outputs[Saída de Erro de Conversão de Dados].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Compra\Conversão de Dados.Outputs[Saída de Erro de Conversão de Dados].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Compra\Conversão de Dados.Outputs[Saída de Erro de Conversão de Dados].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\area stage\Indo ST_Tb_Modo_Compra\ST_Tb_Modo_Compra"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino OLE DB"
+                  name="ST_Tb_Modo_Compra"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[ST_Tb_Modo_Compra]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\area stage\Indo ST_Tb_Modo_Compra\ST_Tb_Modo_Compra.Connections[OleDbConnection]"
+                      connectionManagerID="{1D6CEC87-8244-454A-9B04-42DB1B6285E6}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_STAGE]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\area stage\Indo ST_Tb_Modo_Compra\ST_Tb_Modo_Compra.Inputs[Entrada de Destino OLE DB]"
+                      errorOrTruncationOperation="Inserir"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Destino OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Compra\ST_Tb_Modo_Compra.Inputs[Entrada de Destino OLE DB].Columns[IdModoCompra]"
+                          cachedDataType="i4"
+                          cachedName="IdModoCompra"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Modo_Compra\ST_Tb_Modo_Compra.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdModoCompra]"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra.Outputs[Saída de Origem OLE DB].Columns[IdModoCompra]" />
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Compra\ST_Tb_Modo_Compra.Inputs[Entrada de Destino OLE DB].Columns[Copy of Modo_Compra]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="8"
+                          cachedName="Copy of Modo_Compra"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Modo_Compra\ST_Tb_Modo_Compra.Inputs[Entrada de Destino OLE DB].ExternalColumns[Nome_Modo_Compra]"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Compra\Conversão de Dados.Outputs[Saída de Conversão de Dados].Columns[Copy of Modo_Compra]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Compra\ST_Tb_Modo_Compra.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdModoCompra]"
+                          dataType="i4"
+                          name="IdModoCompra" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Compra\ST_Tb_Modo_Compra.Inputs[Entrada de Destino OLE DB].ExternalColumns[Nome_Modo_Compra]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="Nome_Modo_Compra" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Erro de Destino OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Destino OLE DB"
+                      synchronousInputId="Package\area stage\Indo ST_Tb_Modo_Compra\ST_Tb_Modo_Compra.Inputs[Entrada de Destino OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Compra\ST_Tb_Modo_Compra.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\area stage\Indo ST_Tb_Modo_Compra\Substituicao_valores"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Coluna Derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;0"
+                  description="Cria novos valores de coluna aplicando expressões a colunas de entrada da transformação. Crie novas colunas ou substitua as existentes. Por exemplo, concatene os valores das colunas 'first name' e 'last name' para formar uma coluna 'full name'."
+                  name="Substituicao_valores"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\area stage\Indo ST_Tb_Modo_Compra\Substituicao_valores.Inputs[Entrada de Coluna Derivada]"
+                      description="Entrada para a Transformação Coluna Derivada"
+                      name="Entrada de Coluna Derivada">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Compra\Substituicao_valores.Inputs[Entrada de Coluna Derivada].Columns[Nome_Modo_Compra]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="Nome_Modo_Compra"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra.Outputs[Saída de Origem OLE DB].Columns[Nome_Modo_Compra]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Modo_Compra\Substituicao_valores.Outputs[Saída de Coluna Derivada]"
+                      description="Saída Padrão da Transformação Coluna Derivada"
+                      exclusionGroup="1"
+                      name="Saída de Coluna Derivada"
+                      synchronousInputId="Package\area stage\Indo ST_Tb_Modo_Compra\Substituicao_valores.Inputs[Entrada de Coluna Derivada]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Compra\Substituicao_valores.Outputs[Saída de Coluna Derivada].Columns[Modo_Compra]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computação"
+                          errorRowDisposition="FailComponent"
+                          length="8"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Compra\Substituicao_valores.Outputs[Saída de Coluna Derivada].Columns[Modo_Compra]"
+                          name="Modo_Compra"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Expressão de Coluna Derivada"
+                              name="Expression">([FINDSTRING](#{Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra.Outputs[Saída de Origem OLE DB].Columns[Nome_Modo_Compra]},"ALUG",1) != 0) ? "Alugado" : "Comprado"</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Expressão Amigável de Coluna Derivada"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(FINDSTRING(Nome_Modo_Compra,"ALUG",1) != 0) ? "Alugado" : "Comprado"</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Modo_Compra\Substituicao_valores.Outputs[Saída de Erro de Coluna Derivada]"
+                      description="Saída de Erro da Transformação Coluna Derivada"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Coluna Derivada"
+                      synchronousInputId="Package\area stage\Indo ST_Tb_Modo_Compra\Substituicao_valores.Inputs[Entrada de Coluna Derivada]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Compra\Substituicao_valores.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Compra\Substituicao_valores.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Compra\Substituicao_valores.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Compra\Substituicao_valores.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+                  description="Origem OLE DB"
+                  name="Tb_Modo_Compra"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[Tb_Modo_Compra]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="A variável que contém o comando SQL a ser executado."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra.Connections[OleDbConnection]"
+                      connectionManagerID="{AD763C26-6831-447E-9257-EC4E10A4CCAF}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_OLTP]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra.Outputs[Saída de Origem OLE DB]"
+                      name="Saída de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra.Outputs[Saída de Origem OLE DB].Columns[IdModoCompra]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra.Outputs[Saída de Origem OLE DB].ExternalColumns[IdModoCompra]"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra.Outputs[Saída de Origem OLE DB].Columns[IdModoCompra]"
+                          name="IdModoCompra"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra.Outputs[Saída de Origem OLE DB].Columns[Nome_Modo_Compra]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra.Outputs[Saída de Origem OLE DB].ExternalColumns[Nome_Modo_Compra]"
+                          length="30"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra.Outputs[Saída de Origem OLE DB].Columns[Nome_Modo_Compra]"
+                          name="Nome_Modo_Compra"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra.Outputs[Saída de Origem OLE DB].ExternalColumns[IdModoCompra]"
+                          dataType="i4"
+                          name="IdModoCompra" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra.Outputs[Saída de Origem OLE DB].ExternalColumns[Nome_Modo_Compra]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="Nome_Modo_Compra" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra.Outputs[Saída de Erro de Origem OLE DB]"
+                      isErrorOut="true"
+                      name="Saída de Erro de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra.Outputs[Saída de Erro de Origem OLE DB].Columns[IdModoCompra]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra.Outputs[Saída de Erro de Origem OLE DB].Columns[IdModoCompra]"
+                          name="IdModoCompra" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra.Outputs[Saída de Erro de Origem OLE DB].Columns[Nome_Modo_Compra]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra.Outputs[Saída de Erro de Origem OLE DB].Columns[Nome_Modo_Compra]"
+                          name="Nome_Modo_Compra" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\area stage\Indo ST_Tb_Modo_Compra.Paths[Saída de Coluna Derivada]"
+                  endId="Package\area stage\Indo ST_Tb_Modo_Compra\Conversão de Dados.Inputs[Entrada de Conversão de Dados]"
+                  name="Saída de Coluna Derivada"
+                  startId="Package\area stage\Indo ST_Tb_Modo_Compra\Substituicao_valores.Outputs[Saída de Coluna Derivada]" />
+                <path
+                  refId="Package\area stage\Indo ST_Tb_Modo_Compra.Paths[Saída de Conversão de Dados]"
+                  endId="Package\area stage\Indo ST_Tb_Modo_Compra\ST_Tb_Modo_Compra.Inputs[Entrada de Destino OLE DB]"
+                  name="Saída de Conversão de Dados"
+                  startId="Package\area stage\Indo ST_Tb_Modo_Compra\Conversão de Dados.Outputs[Saída de Conversão de Dados]" />
+                <path
+                  refId="Package\area stage\Indo ST_Tb_Modo_Compra.Paths[Saída de Origem OLE DB]"
+                  endId="Package\area stage\Indo ST_Tb_Modo_Compra\Substituicao_valores.Inputs[Entrada de Coluna Derivada]"
+                  name="Saída de Origem OLE DB"
+                  startId="Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra.Outputs[Saída de Origem OLE DB]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\area stage\Limpando area stage"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{3C3A6FCE-0303-4186-90F0-7954C6C2ED50}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Limpando area stage"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{1D6CEC87-8244-454A-9B04-42DB1B6285E6}"
+              SQLTask:SqlStatementSource="Truncate table ST_Tb_Modo_Compra" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\area stage.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{89A982FB-9FDA-4055-BF51-1E5F3F5740C0}"
+          DTS:From="Package\area stage\Limpando area stage"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\area stage\Indo ST_Tb_Modo_Compra" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{DD210747-0328-442B-A887-0D3672352B22}"
+      DTS:From="Package\area stage"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\area DW" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="196,41.6"
+          Id="Package\area DW\Indo Dim_Modo_Compra"
+          TopLeft="25.8857218518551,72.8352970240439" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="248.8,244"
+          Size="248.8,287.2"
+          Id="Package\area DW"
+          TopLeft="418.571435699658,91.0000012762406" />
+        <NodeLayout
+          Size="207.2,41.6"
+          Id="Package\area stage\Indo ST_Tb_Modo_Compra"
+          TopLeft="13.6857156359419,115.211768105616" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\area stage\Limpando area stage"
+          TopLeft="21.5428586268909,21.1529432570646" />
+        <EdgeLayout
+          Id="Package\area stage.PrecedenceConstraints[Constraint]"
+          TopLeft="113.614287131417,62.7529432570645">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.4588248485513"
+              Start="0,0"
+              End="0,44.9588248485513">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.9588248485513" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="225.6,244"
+          Size="225.6,287.2"
+          Id="Package\area stage"
+          TopLeft="141.428573837086,91.7647071693181" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="367.028573837086,234.982354222779">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="51.5428618625724,0"
+              Start="0,0"
+              End="44.0428618625724,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="44.0428618625724,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\area DW\Indo Dim_Modo_Compra">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="182.4,41.6"
+          Id="Package\area DW\Indo Dim_Modo_Compra\ST_Tb_Modo_Compra"
+          TopLeft="297.85714792962,61.9411773392899" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\area DW\Indo Dim_Modo_Compra\Dim_Modo_Compra"
+          TopLeft="304.285719467669,156.000002187841" />
+        <EdgeLayout
+          Id="Package\area DW\Indo Dim_Modo_Compra.Paths[Saída de Origem OLE DB]"
+          TopLeft="389.471433698645,103.54117733929">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.4588248485512"
+              Start="0,0"
+              End="0,44.9588248485512">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.9588248485512" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\area DW\Indo Dim_Modo_Compra\Dim_Modo_Compra">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\area DW\Indo Dim_Modo_Compra\ST_Tb_Modo_Compra">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\area stage\Indo ST_Tb_Modo_Compra">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\area stage\Indo ST_Tb_Modo_Compra\Substituicao_valores"
+          TopLeft="295.00000502382,119.294119320114" />
+        <NodeLayout
+          Size="182.4,41.6"
+          Id="Package\area stage\Indo ST_Tb_Modo_Compra\ST_Tb_Modo_Compra"
+          TopLeft="287.142862032871,274.529415614877" />
+        <NodeLayout
+          Size="175.2,41.6"
+          Id="Package\area stage\Indo ST_Tb_Modo_Compra\Conversão de Dados"
+          TopLeft="288.571433485771,198.058826307112" />
+        <NodeLayout
+          Size="164,41.6"
+          Id="Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra"
+          TopLeft="292.642862032871,51.3823535846591" />
+        <EdgeLayout
+          Id="Package\area stage\Indo ST_Tb_Modo_Compra.Paths[Saída de Origem OLE DB]"
+          TopLeft="378.421433528345,92.9823535846591">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26.311765735455"
+              Start="0,0"
+              End="0,18.811765735455">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.811765735455" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\area stage\Indo ST_Tb_Modo_Compra.Paths[Saída de Conversão de Dados]"
+          TopLeft="377.257147759321,239.658826307112">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.8705893077653"
+              Start="0,0"
+              End="0,27.3705893077653">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.3705893077653" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\area stage\Indo ST_Tb_Modo_Compra.Paths[Saída de Coluna Derivada]"
+          TopLeft="379.185719254795,160.894119320114">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.1647069869978"
+              Start="0,0"
+              End="0,29.6647069869978">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.6647069869978" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\area stage\Indo ST_Tb_Modo_Compra\ST_Tb_Modo_Compra">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\area stage\Indo ST_Tb_Modo_Compra\Tb_Modo_Compra">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

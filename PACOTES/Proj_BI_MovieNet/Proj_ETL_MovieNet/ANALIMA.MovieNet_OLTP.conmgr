@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="ANALIMA.MovieNet_OLTP"
+  DTS:DTSID="{AD763C26-6831-447E-9257-EC4E10A4CCAF}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=ANALIMA;Initial Catalog=MovieNet_OLTP;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-ST_Tb_Cliente-{AD763C26-6831-447E-9257-EC4E10A4CCAF}ANALIMA.MovieNet_OLTP;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

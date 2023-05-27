@@ -1,0 +1,2264 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/21/2022 5:13:57 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ANALIMA"
+  DTS:CreatorName="ANALIMA\limaa"
+  DTS:DTSID="{87946D7C-3531-4D42-B16A-B3FC26A04A99}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.845.0"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="ST_Tb_Produto"
+  DTS:PackageType="5"
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{68C853F8-1097-444A-8CB0-C8F97DB6CB88}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\area DW"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{B7F33AF5-3E24-43A0-BF20-D84FB48663B6}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="area DW">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\area DW\Indo Dim_Produto"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarefa Fluxo de Dados"
+          DTS:DTSID="{0E4485E5-F98C-4CDE-9703-A1B9096CEE90}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Indo Dim_Produto"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\area DW\Indo Dim_Produto\Coluna Derivada"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Coluna Derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;0"
+                  description="Cria novos valores de coluna aplicando expressões a colunas de entrada da transformação. Crie novas colunas ou substitua as existentes. Por exemplo, concatene os valores das colunas 'first name' e 'last name' para formar uma coluna 'full name'."
+                  name="Coluna Derivada"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\area DW\Indo Dim_Produto\Coluna Derivada.Inputs[Entrada de Coluna Derivada]"
+                      description="Entrada para a Transformação Coluna Derivada"
+                      name="Entrada de Coluna Derivada">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\area DW\Indo Dim_Produto\Coluna Derivada.Outputs[Saída de Coluna Derivada]"
+                      description="Saída Padrão da Transformação Coluna Derivada"
+                      exclusionGroup="1"
+                      name="Saída de Coluna Derivada"
+                      synchronousInputId="Package\area DW\Indo Dim_Produto\Coluna Derivada.Inputs[Entrada de Coluna Derivada]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Coluna Derivada.Outputs[Saída de Coluna Derivada].Columns[Fim]"
+                          dataType="dbTimeStamp"
+                          description="Fim"
+                          errorOrTruncationOperation="Computação"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\area DW\Indo Dim_Produto\Coluna Derivada.Outputs[Saída de Coluna Derivada].Columns[Fim]"
+                          name="Fim"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Expressão de Coluna Derivada"
+                              name="Expression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Expressão Amigável de Coluna Derivada"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\area DW\Indo Dim_Produto\Coluna Derivada.Outputs[Saída de Erro de Coluna Derivada]"
+                      description="Saída de Erro da Transformação Coluna Derivada"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Coluna Derivada"
+                      synchronousInputId="Package\area DW\Indo Dim_Produto\Coluna Derivada.Inputs[Entrada de Coluna Derivada]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Coluna Derivada.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Produto\Coluna Derivada.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Coluna Derivada.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Produto\Coluna Derivada.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\area DW\Indo Dim_Produto\Coluna Derivada 1"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Coluna Derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;0"
+                  description="Cria novos valores de coluna aplicando expressões a colunas de entrada da transformação. Crie novas colunas ou substitua as existentes. Por exemplo, concatene os valores das colunas 'first name' e 'last name' para formar uma coluna 'full name'."
+                  name="Coluna Derivada 1"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\area DW\Indo Dim_Produto\Coluna Derivada 1.Inputs[Entrada de Coluna Derivada]"
+                      description="Entrada para a Transformação Coluna Derivada"
+                      name="Entrada de Coluna Derivada">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\area DW\Indo Dim_Produto\Coluna Derivada 1.Outputs[Saída de Coluna Derivada]"
+                      description="Saída Padrão da Transformação Coluna Derivada"
+                      exclusionGroup="1"
+                      name="Saída de Coluna Derivada"
+                      synchronousInputId="Package\area DW\Indo Dim_Produto\Coluna Derivada 1.Inputs[Entrada de Coluna Derivada]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Coluna Derivada 1.Outputs[Saída de Coluna Derivada].Columns[Inicio]"
+                          dataType="dbTimeStamp"
+                          description="Inicio"
+                          errorOrTruncationOperation="Computação"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\area DW\Indo Dim_Produto\Coluna Derivada 1.Outputs[Saída de Coluna Derivada].Columns[Inicio]"
+                          name="Inicio"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Expressão de Coluna Derivada"
+                              name="Expression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Expressão Amigável de Coluna Derivada"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\area DW\Indo Dim_Produto\Coluna Derivada 1.Outputs[Saída de Erro de Coluna Derivada]"
+                      description="Saída de Erro da Transformação Coluna Derivada"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Coluna Derivada"
+                      synchronousInputId="Package\area DW\Indo Dim_Produto\Coluna Derivada 1.Inputs[Entrada de Coluna Derivada]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Coluna Derivada 1.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Produto\Coluna Derivada 1.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Coluna Derivada 1.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Produto\Coluna Derivada 1.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\area DW\Indo Dim_Produto\Comando OLE DB"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="Comando OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;2"
+                  description="Executa uma instrução SQL para cada linha em um fluxo de dados. Por exemplo, chame um procedimento armazenado 'new employee setup' para cada linha da tabela 'new employees'. Observação: a execução de uma instrução SQL para cada linha de um fluxo de dados grande pode demorar."
+                  name="Comando OLE DB"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [dbo].[Dim_Produto] SET [Fim] = ? WHERE [IdProduto] = ? AND [Fim] IS NULL</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\area DW\Indo Dim_Produto\Comando OLE DB.Connections[OleDbConnection]"
+                      connectionManagerID="{D89AFA85-D355-4220-A373-7799801915A7}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_DW]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\area DW\Indo Dim_Produto\Comando OLE DB.Inputs[Entrada de Comando OLE DB]"
+                      errorOrTruncationOperation="Execução de Comando"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Comando OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Comando OLE DB.Inputs[Entrada de Comando OLE DB].Columns[IdProduto]"
+                          cachedDataType="i4"
+                          cachedName="IdProduto"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Produto\Comando OLE DB.Inputs[Entrada de Comando OLE DB].ExternalColumns[Param_1]"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[IdProduto]" />
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Comando OLE DB.Inputs[Entrada de Comando OLE DB].Columns[Fim]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="Fim"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Produto\Comando OLE DB.Inputs[Entrada de Comando OLE DB].ExternalColumns[Param_0]"
+                          lineageId="Package\area DW\Indo Dim_Produto\Coluna Derivada.Outputs[Saída de Coluna Derivada].Columns[Fim]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Produto\Comando OLE DB.Inputs[Entrada de Comando OLE DB].ExternalColumns[Param_0]"
+                          dataType="dbTimeStamp"
+                          name="Param_0">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Informações de parâmetro. Corresponde os valores de DBPARAMFLAGSENUM de OLE DB."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Produto\Comando OLE DB.Inputs[Entrada de Comando OLE DB].ExternalColumns[Param_1]"
+                          dataType="i4"
+                          name="Param_1">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Informações de parâmetro. Corresponde os valores de DBPARAMFLAGSENUM de OLE DB."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\area DW\Indo Dim_Produto\Comando OLE DB.Outputs[Saída de Comando OLE DB]"
+                      exclusionGroup="1"
+                      name="Saída de Comando OLE DB"
+                      synchronousInputId="Package\area DW\Indo Dim_Produto\Comando OLE DB.Inputs[Entrada de Comando OLE DB]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\area DW\Indo Dim_Produto\Comando OLE DB.Outputs[Saída de Erro de Comando OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Comando OLE DB"
+                      synchronousInputId="Package\area DW\Indo Dim_Produto\Comando OLE DB.Inputs[Entrada de Comando OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Comando OLE DB.Outputs[Saída de Erro de Comando OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Produto\Comando OLE DB.Outputs[Saída de Erro de Comando OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Comando OLE DB.Outputs[Saída de Erro de Comando OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Produto\Comando OLE DB.Outputs[Saída de Erro de Comando OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\area DW\Indo Dim_Produto\Comando OLE DB 1"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="Comando OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;2"
+                  description="Executa uma instrução SQL para cada linha em um fluxo de dados. Por exemplo, chame um procedimento armazenado 'new employee setup' para cada linha da tabela 'new employees'. Observação: a execução de uma instrução SQL para cada linha de um fluxo de dados grande pode demorar."
+                  name="Comando OLE DB 1"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [dbo].[Dim_Produto] SET [Preco_Alugado] = ?,[Preco_Venda] = ? WHERE [IdProduto] = ? AND [Fim] IS NULL</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\area DW\Indo Dim_Produto\Comando OLE DB 1.Connections[OleDbConnection]"
+                      connectionManagerID="{D89AFA85-D355-4220-A373-7799801915A7}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_DW]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\area DW\Indo Dim_Produto\Comando OLE DB 1.Inputs[Entrada de Comando OLE DB]"
+                      errorOrTruncationOperation="Execução de Comando"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Comando OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Comando OLE DB 1.Inputs[Entrada de Comando OLE DB].Columns[IdProduto]"
+                          cachedDataType="i4"
+                          cachedName="IdProduto"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Produto\Comando OLE DB 1.Inputs[Entrada de Comando OLE DB].ExternalColumns[Param_2]"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[IdProduto]" />
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Comando OLE DB 1.Inputs[Entrada de Comando OLE DB].Columns[Preco_Alugado]"
+                          cachedDataType="numeric"
+                          cachedName="Preco_Alugado"
+                          cachedPrecision="10"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Produto\Comando OLE DB 1.Inputs[Entrada de Comando OLE DB].ExternalColumns[Param_0]"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Preco_Alugado]" />
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Comando OLE DB 1.Inputs[Entrada de Comando OLE DB].Columns[Preco_Venda]"
+                          cachedDataType="numeric"
+                          cachedName="Preco_Venda"
+                          cachedPrecision="10"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Produto\Comando OLE DB 1.Inputs[Entrada de Comando OLE DB].ExternalColumns[Param_1]"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Preco_Venda]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Produto\Comando OLE DB 1.Inputs[Entrada de Comando OLE DB].ExternalColumns[Param_0]"
+                          dataType="numeric"
+                          name="Param_0"
+                          precision="10"
+                          scale="2">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Informações de parâmetro. Corresponde os valores de DBPARAMFLAGSENUM de OLE DB."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Produto\Comando OLE DB 1.Inputs[Entrada de Comando OLE DB].ExternalColumns[Param_1]"
+                          dataType="numeric"
+                          name="Param_1"
+                          precision="10"
+                          scale="2">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Informações de parâmetro. Corresponde os valores de DBPARAMFLAGSENUM de OLE DB."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Produto\Comando OLE DB 1.Inputs[Entrada de Comando OLE DB].ExternalColumns[Param_2]"
+                          dataType="i4"
+                          name="Param_2">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Informações de parâmetro. Corresponde os valores de DBPARAMFLAGSENUM de OLE DB."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\area DW\Indo Dim_Produto\Comando OLE DB 1.Outputs[Saída de Comando OLE DB]"
+                      exclusionGroup="1"
+                      name="Saída de Comando OLE DB"
+                      synchronousInputId="Package\area DW\Indo Dim_Produto\Comando OLE DB 1.Inputs[Entrada de Comando OLE DB]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\area DW\Indo Dim_Produto\Comando OLE DB 1.Outputs[Saída de Erro de Comando OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Comando OLE DB"
+                      synchronousInputId="Package\area DW\Indo Dim_Produto\Comando OLE DB 1.Inputs[Entrada de Comando OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Comando OLE DB 1.Outputs[Saída de Erro de Comando OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Produto\Comando OLE DB 1.Outputs[Saída de Erro de Comando OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Comando OLE DB 1.Outputs[Saída de Erro de Comando OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Produto\Comando OLE DB 1.Outputs[Saída de Erro de Comando OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta"
+                  componentClassID="Microsoft.SCD"
+                  contactInfo="Dimensão de Alteração Lenta;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;3"
+                  description="Atualiza uma dimensão de data warehouse do SQL Server Analysis Services. Atualize registros da dimensão que já estejam presentes e insira os registros que não estão. Por exemplo, atualize a tabela DimProduct do banco de dados OLAP AdventureWorksDW com dados da tabela Products do banco de dados OLTP AdventureWorks."
+                  name="Dimensão de Alteração Lenta"
+                  version="3">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a instrução SELECT usada para criar um conjunto de linhas de esquema."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [IdGenero], [IdProduto], [Nome_Completo], [Preco_Alugado], [Preco_Venda],[Inicio],[Fim] FROM [dbo].[Dim_Produto]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a cláusula WHERE na instrução SELECT que seleciona a linha atual entre as linhas com chaves de negócios idênticas."
+                      name="CurrentRowWhere">[Inicio] IS NOT NULL AND [Fim] IS NULL</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as atualizações de atributo de histórico são direcionadas para a saída de transformação para atualizações de atributo de alteração."
+                      name="UpdateChangingAttributeHistory">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se a transformação falhará quando as colunas com atributos fixos contiverem alterações."
+                      name="FailOnFixedAttributeChange">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome da coluna para o membro inferido."
+                      name="InferredMemberIndicator"></property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as atualizações de membro inferido são detectadas."
+                      name="EnableInferredMember">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se a transformação falhará quando uma pesquisa de registro existente falhar."
+                      name="FailOnLookupFailure">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica que todas as linhas na entrada são novas ou a transformação detecta o tipo de alteração."
+                      name="IncomingRowChangeType"
+                      typeConverter="IncomingRowChangeType">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Connections[LookupConnection]"
+                      connectionManagerID="{D89AFA85-D355-4220-A373-7799801915A7}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_DW]"
+                      description="Define a conexão a ser usada para pesquisas na tabela de dimensão"
+                      name="LookupConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta]"
+                      name="Entrada de Dimensão de Alteração Lenta">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta].Columns[IdGenero]"
+                          cachedDataType="i4"
+                          cachedName="IdGenero"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[IdGenero]"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[IdGenero]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              name="ColumnType"
+                              typeConverter="ColumnType">4</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta].Columns[IdProduto]"
+                          cachedDataType="i4"
+                          cachedName="IdProduto"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[IdProduto]"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[IdProduto]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              name="ColumnType"
+                              typeConverter="ColumnType">1</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta].Columns[Nome_Completo]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="200"
+                          cachedName="Nome_Completo"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[Nome_Completo]"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Nome_Completo]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              name="ColumnType"
+                              typeConverter="ColumnType">3</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta].Columns[Preco_Alugado]"
+                          cachedDataType="numeric"
+                          cachedName="Preco_Alugado"
+                          cachedPrecision="10"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[Preco_Alugado]"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Preco_Alugado]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              name="ColumnType"
+                              typeConverter="ColumnType">2</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta].Columns[Preco_Venda]"
+                          cachedDataType="numeric"
+                          cachedName="Preco_Venda"
+                          cachedPrecision="10"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[Preco_Venda]"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Preco_Venda]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              name="ColumnType"
+                              typeConverter="ColumnType">2</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[IdGenero]"
+                          dataType="i4"
+                          name="IdGenero" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[IdProduto]"
+                          dataType="i4"
+                          name="IdProduto" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[Nome_Completo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="Nome_Completo" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[Preco_Alugado]"
+                          dataType="numeric"
+                          name="Preco_Alugado"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[Preco_Venda]"
+                          dataType="numeric"
+                          name="Preco_Venda"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[Inicio]"
+                          dataType="dbTimeStamp"
+                          name="Inicio" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[Fim]"
+                          dataType="dbTimeStamp"
+                          name="Fim" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Outputs[Saída Inalterada]"
+                      description="Linhas inalteradas"
+                      exclusionGroup="1"
+                      name="Saída Inalterada"
+                      synchronousInputId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Outputs[Nova Saída]"
+                      description="Novas linhas"
+                      exclusionGroup="1"
+                      name="Nova Saída"
+                      synchronousInputId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Outputs[Saída de Atributo Fixo]"
+                      description="Linhas com alterações em colunas marcadas com FixedAttribute"
+                      exclusionGroup="1"
+                      name="Saída de Atributo Fixo"
+                      synchronousInputId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Outputs[Saída de Atualizações de Atributo de Alteração]"
+                      description="Essas linhas contêm novas informações para as alterações da coluna ChangingAttribute (Type 1)"
+                      exclusionGroup="1"
+                      name="Saída de Atualizações de Atributo de Alteração"
+                      synchronousInputId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Outputs[Saída de Inserções de Atributo de Histórico]"
+                      description="O resultado de alterações de HistoricalAttribute (Type 2) nessas novas linhas"
+                      exclusionGroup="2"
+                      name="Saída de Inserções de Atributo de Histórico"
+                      synchronousInputId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Outputs[Saída de Atualizações de Membro Inferido]"
+                      description="Informações para atualizar a linha de dimensão inicial sem preenchimento"
+                      exclusionGroup="1"
+                      name="Saída de Atualizações de Membro Inferido"
+                      synchronousInputId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\area DW\Indo Dim_Produto\Dim_Produto"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino OLE DB"
+                  name="Dim_Produto"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[Dim_Produto]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\area DW\Indo Dim_Produto\Dim_Produto.Connections[OleDbConnection]"
+                      connectionManagerID="{D89AFA85-D355-4220-A373-7799801915A7}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_DW]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\area DW\Indo Dim_Produto\Dim_Produto.Inputs[Entrada de Destino OLE DB]"
+                      errorOrTruncationOperation="Inserir"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Destino OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dim_Produto.Inputs[Entrada de Destino OLE DB].Columns[IdProduto]"
+                          cachedDataType="i4"
+                          cachedName="IdProduto"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Produto\Dim_Produto.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdProduto]"
+                          lineageId="Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[IdProduto]" />
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dim_Produto.Inputs[Entrada de Destino OLE DB].Columns[Nome_Completo]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="200"
+                          cachedName="Nome_Completo"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Produto\Dim_Produto.Inputs[Entrada de Destino OLE DB].ExternalColumns[Nome_Completo]"
+                          lineageId="Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[Nome_Completo]" />
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dim_Produto.Inputs[Entrada de Destino OLE DB].Columns[IdGenero]"
+                          cachedDataType="i4"
+                          cachedName="IdGenero"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Produto\Dim_Produto.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdGenero]"
+                          lineageId="Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[IdGenero]" />
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dim_Produto.Inputs[Entrada de Destino OLE DB].Columns[Preco_Venda]"
+                          cachedDataType="numeric"
+                          cachedName="Preco_Venda"
+                          cachedPrecision="10"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Produto\Dim_Produto.Inputs[Entrada de Destino OLE DB].ExternalColumns[Preco_Venda]"
+                          lineageId="Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[Preco_Venda]" />
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dim_Produto.Inputs[Entrada de Destino OLE DB].Columns[Preco_Alugado]"
+                          cachedDataType="numeric"
+                          cachedName="Preco_Alugado"
+                          cachedPrecision="10"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Produto\Dim_Produto.Inputs[Entrada de Destino OLE DB].ExternalColumns[Preco_Alugado]"
+                          lineageId="Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[Preco_Alugado]" />
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dim_Produto.Inputs[Entrada de Destino OLE DB].Columns[Inicio]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="Inicio"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Produto\Dim_Produto.Inputs[Entrada de Destino OLE DB].ExternalColumns[Inicio]"
+                          lineageId="Package\area DW\Indo Dim_Produto\Coluna Derivada 1.Outputs[Saída de Coluna Derivada].Columns[Inicio]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dim_Produto.Inputs[Entrada de Destino OLE DB].ExternalColumns[Idsk]"
+                          dataType="i4"
+                          name="Idsk" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dim_Produto.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdProduto]"
+                          dataType="i4"
+                          name="IdProduto" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dim_Produto.Inputs[Entrada de Destino OLE DB].ExternalColumns[Nome_Completo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="Nome_Completo" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dim_Produto.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdGenero]"
+                          dataType="i4"
+                          name="IdGenero" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dim_Produto.Inputs[Entrada de Destino OLE DB].ExternalColumns[Preco_Venda]"
+                          dataType="numeric"
+                          name="Preco_Venda"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dim_Produto.Inputs[Entrada de Destino OLE DB].ExternalColumns[Preco_Alugado]"
+                          dataType="numeric"
+                          name="Preco_Alugado"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dim_Produto.Inputs[Entrada de Destino OLE DB].ExternalColumns[Inicio]"
+                          dataType="dbTimeStamp"
+                          name="Inicio" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dim_Produto.Inputs[Entrada de Destino OLE DB].ExternalColumns[Fim]"
+                          dataType="dbTimeStamp"
+                          name="Fim" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\area DW\Indo Dim_Produto\Dim_Produto.Outputs[Saída de Erro de Destino OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Destino OLE DB"
+                      synchronousInputId="Package\area DW\Indo Dim_Produto\Dim_Produto.Inputs[Entrada de Destino OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dim_Produto.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Produto\Dim_Produto.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Dim_Produto.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Produto\Dim_Produto.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+                  description="Origem OLE DB"
+                  name="ST_Tb_Produto"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[ST_Tb_Produto]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="A variável que contém o comando SQL a ser executado."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Connections[OleDbConnection]"
+                      connectionManagerID="{1D6CEC87-8244-454A-9B04-42DB1B6285E6}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_STAGE]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB]"
+                      name="Saída de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[IdProduto]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[IdProduto]"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[IdProduto]"
+                          name="IdProduto"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Nome_Completo]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[Nome_Completo]"
+                          length="200"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Nome_Completo]"
+                          name="Nome_Completo"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[IdGenero]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[IdGenero]"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[IdGenero]"
+                          name="IdGenero"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Preco_Venda]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[Preco_Venda]"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Preco_Venda]"
+                          name="Preco_Venda"
+                          precision="10"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Preco_Alugado]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[Preco_Alugado]"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Preco_Alugado]"
+                          name="Preco_Alugado"
+                          precision="10"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[IdProduto]"
+                          dataType="i4"
+                          name="IdProduto" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[Nome_Completo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="Nome_Completo" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[IdGenero]"
+                          dataType="i4"
+                          name="IdGenero" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[Preco_Venda]"
+                          dataType="numeric"
+                          name="Preco_Venda"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[Preco_Alugado]"
+                          dataType="numeric"
+                          name="Preco_Alugado"
+                          precision="10"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Erro de Origem OLE DB]"
+                      isErrorOut="true"
+                      name="Saída de Erro de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[IdProduto]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[IdProduto]"
+                          name="IdProduto" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[Nome_Completo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[Nome_Completo]"
+                          name="Nome_Completo" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[IdGenero]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[IdGenero]"
+                          name="IdGenero" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[Preco_Venda]"
+                          dataType="numeric"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[Preco_Venda]"
+                          name="Preco_Venda"
+                          precision="10"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[Preco_Alugado]"
+                          dataType="numeric"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[Preco_Alugado]"
+                          name="Preco_Alugado"
+                          precision="10"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\area DW\Indo Dim_Produto\Unir Tudo"
+                  componentClassID="Microsoft.UnionAll"
+                  contactInfo="Unir Tudo;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;1"
+                  description="Combina linhas de vários fluxos de dados sem classificação. Por exemplo, adicione novamente as linhas a um fluxo de dados após a correção de erros. Se a classificação for importante, é recomendável usar a transformação Mesclagem."
+                  name="Unir Tudo"
+                  version="1">
+                  <inputs>
+                    <input
+                      refId="Package\area DW\Indo Dim_Produto\Unir Tudo.Inputs[Unir Tudo Entrada 1]"
+                      name="Unir Tudo Entrada 1">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Unir Tudo.Inputs[Unir Tudo Entrada 1].Columns[IdProduto]"
+                          cachedDataType="i4"
+                          cachedName="IdProduto"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[IdProduto]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Identificação de linhagem de coluna de saída"
+                              name="OutputColumnLineageID">#{Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[IdProduto]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Unir Tudo.Inputs[Unir Tudo Entrada 1].Columns[Nome_Completo]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="200"
+                          cachedName="Nome_Completo"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Nome_Completo]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Identificação de linhagem de coluna de saída"
+                              name="OutputColumnLineageID">#{Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[Nome_Completo]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Unir Tudo.Inputs[Unir Tudo Entrada 1].Columns[IdGenero]"
+                          cachedDataType="i4"
+                          cachedName="IdGenero"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[IdGenero]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Identificação de linhagem de coluna de saída"
+                              name="OutputColumnLineageID">#{Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[IdGenero]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Unir Tudo.Inputs[Unir Tudo Entrada 1].Columns[Preco_Venda]"
+                          cachedDataType="numeric"
+                          cachedName="Preco_Venda"
+                          cachedPrecision="10"
+                          cachedScale="2"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Preco_Venda]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Identificação de linhagem de coluna de saída"
+                              name="OutputColumnLineageID">#{Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[Preco_Venda]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Unir Tudo.Inputs[Unir Tudo Entrada 1].Columns[Preco_Alugado]"
+                          cachedDataType="numeric"
+                          cachedName="Preco_Alugado"
+                          cachedPrecision="10"
+                          cachedScale="2"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Preco_Alugado]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Identificação de linhagem de coluna de saída"
+                              name="OutputColumnLineageID">#{Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[Preco_Alugado]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\area DW\Indo Dim_Produto\Unir Tudo.Inputs[Entrada Unir Tudo 1]"
+                      hasSideEffects="true"
+                      name="Entrada Unir Tudo 1">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Unir Tudo.Inputs[Entrada Unir Tudo 1].Columns[IdProduto]"
+                          cachedDataType="i4"
+                          cachedName="IdProduto"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[IdProduto]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Identificação de linhagem de coluna de saída"
+                              name="OutputColumnLineageID">#{Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[IdProduto]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Unir Tudo.Inputs[Entrada Unir Tudo 1].Columns[Nome_Completo]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="200"
+                          cachedName="Nome_Completo"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Nome_Completo]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Identificação de linhagem de coluna de saída"
+                              name="OutputColumnLineageID">#{Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[Nome_Completo]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Unir Tudo.Inputs[Entrada Unir Tudo 1].Columns[IdGenero]"
+                          cachedDataType="i4"
+                          cachedName="IdGenero"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[IdGenero]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Identificação de linhagem de coluna de saída"
+                              name="OutputColumnLineageID">#{Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[IdGenero]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Unir Tudo.Inputs[Entrada Unir Tudo 1].Columns[Preco_Venda]"
+                          cachedDataType="numeric"
+                          cachedName="Preco_Venda"
+                          cachedPrecision="10"
+                          cachedScale="2"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Preco_Venda]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Identificação de linhagem de coluna de saída"
+                              name="OutputColumnLineageID">#{Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[Preco_Venda]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Unir Tudo.Inputs[Entrada Unir Tudo 1].Columns[Preco_Alugado]"
+                          cachedDataType="numeric"
+                          cachedName="Preco_Alugado"
+                          cachedPrecision="10"
+                          cachedScale="2"
+                          lineageId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Preco_Alugado]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Identificação de linhagem de coluna de saída"
+                              name="OutputColumnLineageID">#{Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[Preco_Alugado]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\area DW\Indo Dim_Produto\Unir Tudo.Inputs[Entrada Unir Tudo 2]"
+                      dangling="true"
+                      hasSideEffects="true"
+                      name="Entrada Unir Tudo 2">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1]"
+                      name="Unir Tudo Saída 1">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[IdProduto]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[IdProduto]"
+                          name="IdProduto" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[Nome_Completo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          lineageId="Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[Nome_Completo]"
+                          name="Nome_Completo" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[IdGenero]"
+                          dataType="i4"
+                          lineageId="Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[IdGenero]"
+                          name="IdGenero" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[Preco_Venda]"
+                          dataType="numeric"
+                          lineageId="Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[Preco_Venda]"
+                          name="Preco_Venda"
+                          precision="10"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[Preco_Alugado]"
+                          dataType="numeric"
+                          lineageId="Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[Preco_Alugado]"
+                          name="Preco_Alugado"
+                          precision="10"
+                          scale="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\area DW\Indo Dim_Produto.Paths[Nova Saída]"
+                  endId="Package\area DW\Indo Dim_Produto\Unir Tudo.Inputs[Unir Tudo Entrada 1]"
+                  name="Nova Saída"
+                  startId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Outputs[Nova Saída]" />
+                <path
+                  refId="Package\area DW\Indo Dim_Produto.Paths[Saída de Atualizações de Atributo de Alteração]"
+                  endId="Package\area DW\Indo Dim_Produto\Comando OLE DB 1.Inputs[Entrada de Comando OLE DB]"
+                  name="Saída de Atualizações de Atributo de Alteração"
+                  startId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Outputs[Saída de Atualizações de Atributo de Alteração]" />
+                <path
+                  refId="Package\area DW\Indo Dim_Produto.Paths[Saída de Coluna Derivada]"
+                  endId="Package\area DW\Indo Dim_Produto\Comando OLE DB.Inputs[Entrada de Comando OLE DB]"
+                  name="Saída de Coluna Derivada"
+                  startId="Package\area DW\Indo Dim_Produto\Coluna Derivada.Outputs[Saída de Coluna Derivada]" />
+                <path
+                  refId="Package\area DW\Indo Dim_Produto.Paths[Saída de Coluna Derivada1]"
+                  endId="Package\area DW\Indo Dim_Produto\Dim_Produto.Inputs[Entrada de Destino OLE DB]"
+                  name="Saída de Coluna Derivada"
+                  startId="Package\area DW\Indo Dim_Produto\Coluna Derivada 1.Outputs[Saída de Coluna Derivada]" />
+                <path
+                  refId="Package\area DW\Indo Dim_Produto.Paths[Saída de Comando OLE DB]"
+                  endId="Package\area DW\Indo Dim_Produto\Unir Tudo.Inputs[Entrada Unir Tudo 1]"
+                  name="Saída de Comando OLE DB"
+                  startId="Package\area DW\Indo Dim_Produto\Comando OLE DB.Outputs[Saída de Comando OLE DB]" />
+                <path
+                  refId="Package\area DW\Indo Dim_Produto.Paths[Saída de Inserções de Atributo de Histórico]"
+                  endId="Package\area DW\Indo Dim_Produto\Coluna Derivada.Inputs[Entrada de Coluna Derivada]"
+                  name="Saída de Inserções de Atributo de Histórico"
+                  startId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Outputs[Saída de Inserções de Atributo de Histórico]" />
+                <path
+                  refId="Package\area DW\Indo Dim_Produto.Paths[Saída de Origem OLE DB]"
+                  endId="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta.Inputs[Entrada de Dimensão de Alteração Lenta]"
+                  name="Saída de Origem OLE DB"
+                  startId="Package\area DW\Indo Dim_Produto\ST_Tb_Produto.Outputs[Saída de Origem OLE DB]" />
+                <path
+                  refId="Package\area DW\Indo Dim_Produto.Paths[Unir Tudo Saída 1]"
+                  endId="Package\area DW\Indo Dim_Produto\Coluna Derivada 1.Inputs[Entrada de Coluna Derivada]"
+                  name="Unir Tudo Saída 1"
+                  startId="Package\area DW\Indo Dim_Produto\Unir Tudo.Outputs[Unir Tudo Saída 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\area stage"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{E1387327-95A2-49DB-8D25-84BE3275FA17}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="area stage">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\area stage\Indo ST_Tb_Produto"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarefa Fluxo de Dados"
+          DTS:DTSID="{F8345A69-5AC0-40E0-A9B6-233804F69616}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Indo ST_Tb_Produto"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino OLE DB"
+                  name="ST_Tb_Produto"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[ST_Tb_Produto]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto.Connections[OleDbConnection]"
+                      connectionManagerID="{1D6CEC87-8244-454A-9B04-42DB1B6285E6}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_STAGE]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto.Inputs[Entrada de Destino OLE DB]"
+                      errorOrTruncationOperation="Inserir"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Destino OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto.Inputs[Entrada de Destino OLE DB].Columns[idproduto]"
+                          cachedDataType="i4"
+                          cachedName="idproduto"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdProduto]"
+                          lineageId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[idproduto]" />
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto.Inputs[Entrada de Destino OLE DB].Columns[Preco_Venda]"
+                          cachedDataType="numeric"
+                          cachedName="Preco_Venda"
+                          cachedPrecision="10"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto.Inputs[Entrada de Destino OLE DB].ExternalColumns[Preco_Venda]"
+                          lineageId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Preco_Venda]" />
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto.Inputs[Entrada de Destino OLE DB].Columns[Preco_alugado]"
+                          cachedDataType="numeric"
+                          cachedName="Preco_alugado"
+                          cachedPrecision="10"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto.Inputs[Entrada de Destino OLE DB].ExternalColumns[Preco_Alugado]"
+                          lineageId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Preco_alugado]" />
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto.Inputs[Entrada de Destino OLE DB].Columns[Nome_Filme]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="150"
+                          cachedName="Nome_Filme"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto.Inputs[Entrada de Destino OLE DB].ExternalColumns[Nome_Completo]"
+                          lineageId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Nome_Filme]" />
+                        <inputColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto.Inputs[Entrada de Destino OLE DB].Columns[id_genero]"
+                          cachedDataType="i4"
+                          cachedName="id_genero"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdGenero]"
+                          lineageId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[id_genero]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdProduto]"
+                          dataType="i4"
+                          name="IdProduto" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto.Inputs[Entrada de Destino OLE DB].ExternalColumns[Nome_Completo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="Nome_Completo" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdGenero]"
+                          dataType="i4"
+                          name="IdGenero" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto.Inputs[Entrada de Destino OLE DB].ExternalColumns[Preco_Venda]"
+                          dataType="numeric"
+                          name="Preco_Venda"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto.Inputs[Entrada de Destino OLE DB].ExternalColumns[Preco_Alugado]"
+                          dataType="numeric"
+                          name="Preco_Alugado"
+                          precision="10"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto.Outputs[Saída de Erro de Destino OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Destino OLE DB"
+                      synchronousInputId="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto.Inputs[Entrada de Destino OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+                  description="Origem OLE DB"
+                  name="Tb_Produto"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select idproduto, 
+	   Nome_Filme, 
+	   id_genero, 
+	   Preco_Venda, 
+	   Preco_alugado
+from Tb_produto</property>
+                    <property
+                      dataType="System.String"
+                      description="A variável que contém o comando SQL a ser executado."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Connections[OleDbConnection]"
+                      connectionManagerID="{AD763C26-6831-447E-9257-EC4E10A4CCAF}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_OLTP]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB]"
+                      name="Saída de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[idproduto]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[idproduto]"
+                          lineageId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[idproduto]"
+                          name="idproduto"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Nome_Filme]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[Nome_Filme]"
+                          length="150"
+                          lineageId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Nome_Filme]"
+                          name="Nome_Filme"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[id_genero]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[id_genero]"
+                          lineageId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[id_genero]"
+                          name="id_genero"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Preco_Venda]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[Preco_Venda]"
+                          lineageId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Preco_Venda]"
+                          name="Preco_Venda"
+                          precision="10"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Preco_alugado]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[Preco_alugado]"
+                          lineageId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB].Columns[Preco_alugado]"
+                          name="Preco_alugado"
+                          precision="10"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[idproduto]"
+                          dataType="i4"
+                          name="idproduto" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[Nome_Filme]"
+                          codePage="1252"
+                          dataType="str"
+                          length="150"
+                          name="Nome_Filme" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[id_genero]"
+                          dataType="i4"
+                          name="id_genero" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[Preco_Venda]"
+                          dataType="numeric"
+                          name="Preco_Venda"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[Preco_alugado]"
+                          dataType="numeric"
+                          name="Preco_alugado"
+                          precision="10"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Erro de Origem OLE DB]"
+                      isErrorOut="true"
+                      name="Saída de Erro de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[idproduto]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[idproduto]"
+                          name="idproduto" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[Nome_Filme]"
+                          codePage="1252"
+                          dataType="str"
+                          length="150"
+                          lineageId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[Nome_Filme]"
+                          name="Nome_Filme" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[id_genero]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[id_genero]"
+                          name="id_genero" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[Preco_Venda]"
+                          dataType="numeric"
+                          lineageId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[Preco_Venda]"
+                          name="Preco_Venda"
+                          precision="10"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[Preco_alugado]"
+                          dataType="numeric"
+                          lineageId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[Preco_alugado]"
+                          name="Preco_alugado"
+                          precision="10"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\area stage\Indo ST_Tb_Produto.Paths[Saída de Origem OLE DB]"
+                  endId="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto.Inputs[Entrada de Destino OLE DB]"
+                  name="Saída de Origem OLE DB"
+                  startId="Package\area stage\Indo ST_Tb_Produto\Tb_Produto.Outputs[Saída de Origem OLE DB]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\area stage\Limpando area stage"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{A90C92C6-0FFF-4CB0-A2DF-B57AFE48FCC7}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Limpando area stage"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{1D6CEC87-8244-454A-9B04-42DB1B6285E6}"
+              SQLTask:SqlStatementSource="Truncate table ST_Tb_Produto" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\area stage.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{0F185453-0AAA-487B-96E8-10F74ED2ED5A}"
+          DTS:From="Package\area stage\Limpando area stage"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\area stage\Indo ST_Tb_Produto" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{3D533890-FA51-40FC-96F0-AB2130268BC2}"
+      DTS:From="Package\area stage"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\area DW" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\area DW\Indo Dim_Produto"
+          TopLeft="22.6571499732078,67.6470611186176" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="238.4,247.2"
+          Size="238.4,290.4"
+          Id="Package\area DW"
+          TopLeft="395.00000672681,52.764706622358" />
+        <NodeLayout
+          Size="176,41.6"
+          Id="Package\area stage\Indo ST_Tb_Produto"
+          TopLeft="13.9428584565922,126.941179709451" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\area stage\Limpando area stage"
+          TopLeft="19.6571442681922,32.1176489678221" />
+        <EdgeLayout
+          Id="Package\area stage.PrecedenceConstraints[Constraint]"
+          TopLeft="105.000001362392,73.7176489678217">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53.223530741629"
+              Start="0,0"
+              End="0,45.723530741629">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.723530741629" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="223.2,249.6"
+          Size="223.2,292.8"
+          Id="Package\area stage"
+          TopLeft="118.571430590688,48.1764712638921" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="341.771430590688,196.270588943125">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="53.2285761361219,0"
+              Start="0,0"
+              End="45.7285761361219,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="45.7285761361219,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\area DW\Indo Dim_Produto">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\area DW\Indo Dim_Produto\ST_Tb_Produto"
+          TopLeft="313.728574177684,16.2058825030871" />
+        <NodeLayout
+          Size="124.8,41.6"
+          Id="Package\area DW\Indo Dim_Produto\Unir Tudo"
+          TopLeft="327.328574177684,422.605882503087" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\area DW\Indo Dim_Produto\Coluna Derivada"
+          TopLeft="173.128574177684,219.405882503087" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\area DW\Indo Dim_Produto\Coluna Derivada 1"
+          TopLeft="307.328574177684,524.205882503087" />
+        <NodeLayout
+          Size="139.2,41.6"
+          Id="Package\area DW\Indo Dim_Produto\Dim_Produto"
+          TopLeft="308.528574177684,625.805882503087" />
+        <NodeLayout
+          Size="216,41.6"
+          Id="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta"
+          TopLeft="281.728574177684,117.805882503087" />
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\area DW\Indo Dim_Produto\Comando OLE DB"
+          TopLeft="166.928574177684,321.005882503087" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\area DW\Indo Dim_Produto\Comando OLE DB 1"
+          TopLeft="451.128574177684,219.405882503087" />
+        <EdgeLayout
+          Id="Package\area DW\Indo Dim_Produto.Paths[Saída de Inserções de Atributo de Histórico]"
+          TopLeft="337.728574177684,159.405882503087">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-87,59.9999999999999"
+              Start="0,0"
+              End="-87,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.4878048780487" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.4878048780487"
+                    Point2="0,20.4878048780487"
+                    Point3="-4,20.4878048780487" />
+                  <mssgle:LineSegment
+                    End="-83,20.4878048780487" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-83,20.4878048780487"
+                    Point2="-87,20.4878048780487"
+                    Point3="-87,24.4878048780487" />
+                  <mssgle:LineSegment
+                    End="-87,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-139.5426953125,25.4878048780487,192.085390625,12.2490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\area DW\Indo Dim_Produto.Paths[Saída de Comando OLE DB]"
+          TopLeft="247.728574177684,362.605882503087">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="122.533333333333,59.9999999999999"
+              Start="0,0"
+              End="122.533333333333,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5443037974683" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5443037974683"
+                    Point2="0,35.5443037974683"
+                    Point3="4,35.5443037974683" />
+                  <mssgle:LineSegment
+                    End="118.533333333333,35.5443037974683" />
+                  <mssgle:CubicBezierSegment
+                    Point1="118.533333333333,35.5443037974683"
+                    Point2="122.533333333333,35.5443037974683"
+                    Point3="122.533333333333,39.5443037974683" />
+                  <mssgle:LineSegment
+                    End="122.533333333333,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\area DW\Indo Dim_Produto.Paths[Saída de Coluna Derivada1]"
+          TopLeft="389.728574177684,565.805882503087">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-11.6,59.9999999999999"
+              Start="0,0"
+              End="-11.6,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.9999999999999" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.9999999999999"
+                    Point2="0,29.9999999999999"
+                    Point3="-4,29.9999999999999" />
+                  <mssgle:LineSegment
+                    End="-7.60000000000002,29.9999999999999" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-7.60000000000002,29.9999999999999"
+                    Point2="-11.6,29.9999999999999"
+                    Point3="-11.6,33.9999999999999" />
+                  <mssgle:LineSegment
+                    End="-11.6,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\area DW\Indo Dim_Produto.Paths[Saída de Coluna Derivada]"
+          TopLeft="249.228574177684,261.005882503087">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\area DW\Indo Dim_Produto.Paths[Saída de Atualizações de Atributo de Alteração]"
+          TopLeft="441.728574177684,159.405882503087">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="95,59.9999999999999"
+              Start="0,0"
+              End="95,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.4878048780487" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.4878048780487"
+                    Point2="0,20.4878048780487"
+                    Point3="4,20.4878048780487" />
+                  <mssgle:LineSegment
+                    End="91,20.4878048780487" />
+                  <mssgle:CubicBezierSegment
+                    Point1="91,20.4878048780487"
+                    Point2="95,20.4878048780487"
+                    Point3="95,24.4878048780487" />
+                  <mssgle:LineSegment
+                    End="95,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.8626953125,25.4878048780487,206.725390625,12.2490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\area DW\Indo Dim_Produto.Paths[Nova Saída]"
+          TopLeft="389.728574177684,159.405882503087">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="19.4666666666667,263.2"
+              Start="0,0"
+              End="19.4666666666667,255.7">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,151.921012658228" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,151.921012658228"
+                    Point2="0,155.921012658228"
+                    Point3="4,155.921012658228" />
+                  <mssgle:LineSegment
+                    End="15.4666666666667,155.921012658228" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.4666666666667,155.921012658228"
+                    Point2="19.4666666666667,155.921012658228"
+                    Point3="19.4666666666667,159.921012658228" />
+                  <mssgle:LineSegment
+                    End="19.4666666666667,255.7" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-15.2600260416667,160.921012658228,49.98671875,10.3349609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\area DW\Indo Dim_Produto.Paths[Unir Tudo Saída 1]"
+          TopLeft="389.728574177684,464.205882503087">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\area DW\Indo Dim_Produto.Paths[Saída de Origem OLE DB]"
+          TopLeft="389.528574177684,57.8058825030871">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\area DW\Indo Dim_Produto\ST_Tb_Produto">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\area DW\Indo Dim_Produto\Dim_Produto">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\area DW\Indo Dim_Produto\Dimensão de Alteração Lenta">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionID&gt;{D89AFA85-D355-4220-A373-7799801915A7}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[Dim_Produto]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origem OLE DB.Saídas[Saída de Origem OLE DB].Colunas[IdGenero]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;IdGenero&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origem OLE DB.Saídas[Saída de Origem OLE DB].Colunas[IdProduto]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;IdProduto&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origem OLE DB.Saídas[Saída de Origem OLE DB].Colunas[Nome_Completo]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Nome_Completo&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origem OLE DB.Saídas[Saída de Origem OLE DB].Colunas[Preco_Alugado]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Preco_Alugado&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origem OLE DB.Saídas[Saída de Origem OLE DB].Colunas[Preco_Venda]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Preco_Venda&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Coluna Derivada&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Comando OLE DB&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Unir Tudo&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Coluna Derivada 1&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Comando OLE DB 1&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;true&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn&gt;Inicio&lt;/StartDateColumn&gt;
+  &lt;EndDateColumn&gt;Fim&lt;/EndDateColumn&gt;
+  &lt;DateVariable&gt;System::StartTime&lt;/DateVariable&gt;
+  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\area stage\Indo ST_Tb_Produto">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto"
+          TopLeft="303.571433741219,175.117649514782" />
+        <NodeLayout
+          Size="132.8,41.6"
+          Id="Package\area stage\Indo ST_Tb_Produto\Tb_Produto"
+          TopLeft="308.571433826369,67.2941185908334" />
+        <EdgeLayout
+          Id="Package\area stage\Indo ST_Tb_Produto.Paths[Saída de Origem OLE DB]"
+          TopLeft="377.071433783794,108.894118590833">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66.2235309239489"
+              Start="0,0"
+              End="0,58.7235309239489">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.7235309239489" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\area stage\Indo ST_Tb_Produto\ST_Tb_Produto">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\area stage\Indo ST_Tb_Produto\Tb_Produto">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

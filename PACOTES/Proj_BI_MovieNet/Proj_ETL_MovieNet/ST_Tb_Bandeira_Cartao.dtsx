@@ -1,0 +1,863 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/21/2022 5:25:45 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ANALIMA"
+  DTS:CreatorName="ANALIMA\limaa"
+  DTS:DTSID="{A030CA24-1DE2-4085-A318-1B3C4A61D92A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.845.0"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="ST_Tb_Bandeira_Cartao"
+  DTS:PackageType="5"
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{118A7342-4156-4CB2-9810-80E5B03DDFB3}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Area DW"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{78E46EAB-E6D4-49B8-B662-4DFB5CA68CEB}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Area DW">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Area DW\Indo Dim_Bandeira"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarefa Fluxo de Dados"
+          DTS:DTSID="{9C339F2F-BA60-474A-AC40-AAEF7F7C75CD}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Indo Dim_Bandeira"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Area DW\Indo Dim_Bandeira\Dim_Bandeira_Cartao"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino OLE DB"
+                  name="Dim_Bandeira_Cartao"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[Dim_Bandeira_Cartao]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Area DW\Indo Dim_Bandeira\Dim_Bandeira_Cartao.Connections[OleDbConnection]"
+                      connectionManagerID="{D89AFA85-D355-4220-A373-7799801915A7}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_DW]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Area DW\Indo Dim_Bandeira\Dim_Bandeira_Cartao.Inputs[Entrada de Destino OLE DB]"
+                      errorOrTruncationOperation="Inserir"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Destino OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Area DW\Indo Dim_Bandeira\Dim_Bandeira_Cartao.Inputs[Entrada de Destino OLE DB].Columns[idBandeira]"
+                          cachedDataType="i4"
+                          cachedName="idBandeira"
+                          externalMetadataColumnId="Package\Area DW\Indo Dim_Bandeira\Dim_Bandeira_Cartao.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdBandeira]"
+                          lineageId="Package\Area DW\Indo Dim_Bandeira\ST_Tb_Bandeira_Cartao.Outputs[Saída de Origem OLE DB].Columns[idBandeira]" />
+                        <inputColumn
+                          refId="Package\Area DW\Indo Dim_Bandeira\Dim_Bandeira_Cartao.Inputs[Entrada de Destino OLE DB].Columns[Nome_Bandeira]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="Nome_Bandeira"
+                          externalMetadataColumnId="Package\Area DW\Indo Dim_Bandeira\Dim_Bandeira_Cartao.Inputs[Entrada de Destino OLE DB].ExternalColumns[Nome_Bandeira]"
+                          lineageId="Package\Area DW\Indo Dim_Bandeira\ST_Tb_Bandeira_Cartao.Outputs[Saída de Origem OLE DB].Columns[Nome_Bandeira]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Area DW\Indo Dim_Bandeira\Dim_Bandeira_Cartao.Inputs[Entrada de Destino OLE DB].ExternalColumns[Idsk]"
+                          dataType="i4"
+                          name="Idsk" />
+                        <externalMetadataColumn
+                          refId="Package\Area DW\Indo Dim_Bandeira\Dim_Bandeira_Cartao.Inputs[Entrada de Destino OLE DB].ExternalColumns[IdBandeira]"
+                          dataType="i4"
+                          name="IdBandeira" />
+                        <externalMetadataColumn
+                          refId="Package\Area DW\Indo Dim_Bandeira\Dim_Bandeira_Cartao.Inputs[Entrada de Destino OLE DB].ExternalColumns[Nome_Bandeira]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="Nome_Bandeira" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Area DW\Indo Dim_Bandeira\Dim_Bandeira_Cartao.Outputs[Saída de Erro de Destino OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Destino OLE DB"
+                      synchronousInputId="Package\Area DW\Indo Dim_Bandeira\Dim_Bandeira_Cartao.Inputs[Entrada de Destino OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Area DW\Indo Dim_Bandeira\Dim_Bandeira_Cartao.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Area DW\Indo Dim_Bandeira\Dim_Bandeira_Cartao.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Area DW\Indo Dim_Bandeira\Dim_Bandeira_Cartao.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Area DW\Indo Dim_Bandeira\Dim_Bandeira_Cartao.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Area DW\Indo Dim_Bandeira\ST_Tb_Bandeira_Cartao"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+                  description="Origem OLE DB"
+                  name="ST_Tb_Bandeira_Cartao"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[ST_Tb_Bandeira_Cartao]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT idBandeira, Nome_Bandeira
+FROM ST_Tb_Bandeira_Cartao
+WHERE idBandeira
+		NOT IN(SELECT idbandeira
+				FROM [MovieNet_DW].[dbo].[Dim_Bandeira_Cartao])</property>
+                    <property
+                      dataType="System.String"
+                      description="A variável que contém o comando SQL a ser executado."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Area DW\Indo Dim_Bandeira\ST_Tb_Bandeira_Cartao.Connections[OleDbConnection]"
+                      connectionManagerID="{1D6CEC87-8244-454A-9B04-42DB1B6285E6}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_STAGE]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Area DW\Indo Dim_Bandeira\ST_Tb_Bandeira_Cartao.Outputs[Saída de Origem OLE DB]"
+                      name="Saída de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Area DW\Indo Dim_Bandeira\ST_Tb_Bandeira_Cartao.Outputs[Saída de Origem OLE DB].Columns[idBandeira]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Area DW\Indo Dim_Bandeira\ST_Tb_Bandeira_Cartao.Outputs[Saída de Origem OLE DB].ExternalColumns[idBandeira]"
+                          lineageId="Package\Area DW\Indo Dim_Bandeira\ST_Tb_Bandeira_Cartao.Outputs[Saída de Origem OLE DB].Columns[idBandeira]"
+                          name="idBandeira"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Area DW\Indo Dim_Bandeira\ST_Tb_Bandeira_Cartao.Outputs[Saída de Origem OLE DB].Columns[Nome_Bandeira]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Area DW\Indo Dim_Bandeira\ST_Tb_Bandeira_Cartao.Outputs[Saída de Origem OLE DB].ExternalColumns[Nome_Bandeira]"
+                          length="30"
+                          lineageId="Package\Area DW\Indo Dim_Bandeira\ST_Tb_Bandeira_Cartao.Outputs[Saída de Origem OLE DB].Columns[Nome_Bandeira]"
+                          name="Nome_Bandeira"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Area DW\Indo Dim_Bandeira\ST_Tb_Bandeira_Cartao.Outputs[Saída de Origem OLE DB].ExternalColumns[idBandeira]"
+                          dataType="i4"
+                          name="idBandeira" />
+                        <externalMetadataColumn
+                          refId="Package\Area DW\Indo Dim_Bandeira\ST_Tb_Bandeira_Cartao.Outputs[Saída de Origem OLE DB].ExternalColumns[Nome_Bandeira]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="Nome_Bandeira" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Area DW\Indo Dim_Bandeira\ST_Tb_Bandeira_Cartao.Outputs[Saída de Erro de Origem OLE DB]"
+                      isErrorOut="true"
+                      name="Saída de Erro de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Area DW\Indo Dim_Bandeira\ST_Tb_Bandeira_Cartao.Outputs[Saída de Erro de Origem OLE DB].Columns[idBandeira]"
+                          dataType="i4"
+                          lineageId="Package\Area DW\Indo Dim_Bandeira\ST_Tb_Bandeira_Cartao.Outputs[Saída de Erro de Origem OLE DB].Columns[idBandeira]"
+                          name="idBandeira" />
+                        <outputColumn
+                          refId="Package\Area DW\Indo Dim_Bandeira\ST_Tb_Bandeira_Cartao.Outputs[Saída de Erro de Origem OLE DB].Columns[Nome_Bandeira]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          lineageId="Package\Area DW\Indo Dim_Bandeira\ST_Tb_Bandeira_Cartao.Outputs[Saída de Erro de Origem OLE DB].Columns[Nome_Bandeira]"
+                          name="Nome_Bandeira" />
+                        <outputColumn
+                          refId="Package\Area DW\Indo Dim_Bandeira\ST_Tb_Bandeira_Cartao.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Area DW\Indo Dim_Bandeira\ST_Tb_Bandeira_Cartao.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Area DW\Indo Dim_Bandeira\ST_Tb_Bandeira_Cartao.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Area DW\Indo Dim_Bandeira\ST_Tb_Bandeira_Cartao.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Area DW\Indo Dim_Bandeira.Paths[Saída de Origem OLE DB]"
+                  endId="Package\Area DW\Indo Dim_Bandeira\Dim_Bandeira_Cartao.Inputs[Entrada de Destino OLE DB]"
+                  name="Saída de Origem OLE DB"
+                  startId="Package\Area DW\Indo Dim_Bandeira\ST_Tb_Bandeira_Cartao.Outputs[Saída de Origem OLE DB]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Area stage"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{65185BE9-3806-4AA9-82E4-7828499E66BA}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Area stage">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarefa Fluxo de Dados"
+          DTS:DTSID="{8DF1E3B4-0095-4C68-BCB9-531E03A5F2CD}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Indo ST_Tb_Bandeira_Cartao"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\ST_Tb_Bandeira_Cartao"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino OLE DB"
+                  name="ST_Tb_Bandeira_Cartao"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[ST_Tb_Bandeira_Cartao]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\ST_Tb_Bandeira_Cartao.Connections[OleDbConnection]"
+                      connectionManagerID="{1D6CEC87-8244-454A-9B04-42DB1B6285E6}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_STAGE]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\ST_Tb_Bandeira_Cartao.Inputs[Entrada de Destino OLE DB]"
+                      errorOrTruncationOperation="Inserir"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Destino OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\ST_Tb_Bandeira_Cartao.Inputs[Entrada de Destino OLE DB].Columns[idbandeira]"
+                          cachedDataType="i4"
+                          cachedName="idbandeira"
+                          externalMetadataColumnId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\ST_Tb_Bandeira_Cartao.Inputs[Entrada de Destino OLE DB].ExternalColumns[idBandeira]"
+                          lineageId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\Tb_Bandeira_Cartao.Outputs[Saída de Origem OLE DB].Columns[idbandeira]" />
+                        <inputColumn
+                          refId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\ST_Tb_Bandeira_Cartao.Inputs[Entrada de Destino OLE DB].Columns[nome_bandeira]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="nome_bandeira"
+                          externalMetadataColumnId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\ST_Tb_Bandeira_Cartao.Inputs[Entrada de Destino OLE DB].ExternalColumns[Nome_Bandeira]"
+                          lineageId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\Tb_Bandeira_Cartao.Outputs[Saída de Origem OLE DB].Columns[nome_bandeira]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\ST_Tb_Bandeira_Cartao.Inputs[Entrada de Destino OLE DB].ExternalColumns[idBandeira]"
+                          dataType="i4"
+                          name="idBandeira" />
+                        <externalMetadataColumn
+                          refId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\ST_Tb_Bandeira_Cartao.Inputs[Entrada de Destino OLE DB].ExternalColumns[Nome_Bandeira]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="Nome_Bandeira" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\ST_Tb_Bandeira_Cartao.Outputs[Saída de Erro de Destino OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Destino OLE DB"
+                      synchronousInputId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\ST_Tb_Bandeira_Cartao.Inputs[Entrada de Destino OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\ST_Tb_Bandeira_Cartao.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\ST_Tb_Bandeira_Cartao.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\ST_Tb_Bandeira_Cartao.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\ST_Tb_Bandeira_Cartao.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\Tb_Bandeira_Cartao"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+                  description="Origem OLE DB"
+                  name="Tb_Bandeira_Cartao"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select idbandeira, nome_bandeira
+from Tb_Bandeira_Cartao</property>
+                    <property
+                      dataType="System.String"
+                      description="A variável que contém o comando SQL a ser executado."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\Tb_Bandeira_Cartao.Connections[OleDbConnection]"
+                      connectionManagerID="{AD763C26-6831-447E-9257-EC4E10A4CCAF}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ANALIMA.MovieNet_OLTP]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\Tb_Bandeira_Cartao.Outputs[Saída de Origem OLE DB]"
+                      name="Saída de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\Tb_Bandeira_Cartao.Outputs[Saída de Origem OLE DB].Columns[idbandeira]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\Tb_Bandeira_Cartao.Outputs[Saída de Origem OLE DB].ExternalColumns[idbandeira]"
+                          lineageId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\Tb_Bandeira_Cartao.Outputs[Saída de Origem OLE DB].Columns[idbandeira]"
+                          name="idbandeira"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\Tb_Bandeira_Cartao.Outputs[Saída de Origem OLE DB].Columns[nome_bandeira]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\Tb_Bandeira_Cartao.Outputs[Saída de Origem OLE DB].ExternalColumns[nome_bandeira]"
+                          length="50"
+                          lineageId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\Tb_Bandeira_Cartao.Outputs[Saída de Origem OLE DB].Columns[nome_bandeira]"
+                          name="nome_bandeira"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\Tb_Bandeira_Cartao.Outputs[Saída de Origem OLE DB].ExternalColumns[idbandeira]"
+                          dataType="i4"
+                          name="idbandeira" />
+                        <externalMetadataColumn
+                          refId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\Tb_Bandeira_Cartao.Outputs[Saída de Origem OLE DB].ExternalColumns[nome_bandeira]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="nome_bandeira" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\Tb_Bandeira_Cartao.Outputs[Saída de Erro de Origem OLE DB]"
+                      isErrorOut="true"
+                      name="Saída de Erro de Origem OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\Tb_Bandeira_Cartao.Outputs[Saída de Erro de Origem OLE DB].Columns[idbandeira]"
+                          dataType="i4"
+                          lineageId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\Tb_Bandeira_Cartao.Outputs[Saída de Erro de Origem OLE DB].Columns[idbandeira]"
+                          name="idbandeira" />
+                        <outputColumn
+                          refId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\Tb_Bandeira_Cartao.Outputs[Saída de Erro de Origem OLE DB].Columns[nome_bandeira]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\Tb_Bandeira_Cartao.Outputs[Saída de Erro de Origem OLE DB].Columns[nome_bandeira]"
+                          name="nome_bandeira" />
+                        <outputColumn
+                          refId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\Tb_Bandeira_Cartao.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\Tb_Bandeira_Cartao.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\Tb_Bandeira_Cartao.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\Tb_Bandeira_Cartao.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao.Paths[Saída de Origem OLE DB]"
+                  endId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\ST_Tb_Bandeira_Cartao.Inputs[Entrada de Destino OLE DB]"
+                  name="Saída de Origem OLE DB"
+                  startId="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\Tb_Bandeira_Cartao.Outputs[Saída de Origem OLE DB]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Area stage\Limpando area stage"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{848CBE07-502A-4A7B-8539-1D277BAE4555}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Limpando area stage"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{1D6CEC87-8244-454A-9B04-42DB1B6285E6}"
+              SQLTask:SqlStatementSource="Truncate table ST_Tb_Bandeira_Cartao" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Area stage.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{EDFE0CA7-6637-4301-882A-5CEB7233AB36}"
+          DTS:From="Package\Area stage\Limpando area stage"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Area stage\Indo ST_Tb_Bandeira_Cartao" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{E4460B07-DE8E-4690-9C45-32BFCAB98EA5}"
+      DTS:From="Package\Area stage"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Area DW" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="168.8,41.6"
+          Id="Package\Area DW\Indo Dim_Bandeira"
+          TopLeft="27.0285792866533,60.2000023701612" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="235.2,252"
+          Size="235.2,295.2"
+          Id="Package\Area DW"
+          TopLeft="434.285721681556,65.7647068046781" />
+        <NodeLayout
+          Size="216.8,41.6"
+          Id="Package\Area stage\Indo ST_Tb_Bandeira_Cartao"
+          TopLeft="7.20000136239197,141.22353292947" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\Area stage\Limpando area stage"
+          TopLeft="21.485715891391,32.6352961124433" />
+        <EdgeLayout
+          Id="Package\Area stage.PrecedenceConstraints[Constraint]"
+          TopLeft="112.742858626891,74.235296112443">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66.9882368170267"
+              Start="0,0"
+              End="0,59.4882368170267">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.4882368170267" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="228.8,255.2"
+          Size="228.8,298.4"
+          Id="Package\Area stage"
+          TopLeft="72.8571440978927,66.5294126977556" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="301.657144097893,214.547059751217">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="132.628577583663,0"
+              Start="0,0"
+              End="125.128577583663,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="125.128577583663,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Area DW\Indo Dim_Bandeira">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\Area DW\Indo Dim_Bandeira\ST_Tb_Bandeira_Cartao"
+          TopLeft="298.57143365607,76.4705893077652" />
+        <NodeLayout
+          Size="180.8,41.6"
+          Id="Package\Area DW\Indo Dim_Bandeira\Dim_Bandeira_Cartao"
+          TopLeft="296.42857647672,175.117649514782" />
+        <EdgeLayout
+          Id="Package\Area DW\Indo Dim_Bandeira.Paths[Saída de Origem OLE DB]"
+          TopLeft="390.700005066395,118.070589307765">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.0470602070171"
+              Start="0,0"
+              End="0,49.5470602070171">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.5470602070171" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Area DW\Indo Dim_Bandeira\Dim_Bandeira_Cartao">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Area DW\Indo Dim_Bandeira\ST_Tb_Bandeira_Cartao">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Area stage\Indo ST_Tb_Bandeira_Cartao">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\Tb_Bandeira_Cartao"
+          TopLeft="319.285719723118,82.5882364523864" />
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\ST_Tb_Bandeira_Cartao"
+          TopLeft="312.142862458619,190.411767376335" />
+        <EdgeLayout
+          Id="Package\Area stage\Indo ST_Tb_Bandeira_Cartao.Paths[Saída de Origem OLE DB]"
+          TopLeft="407.314291090868,124.188236452386">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66.2235309239489"
+              Start="0,0"
+              End="0,58.7235309239489">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.7235309239489" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\ST_Tb_Bandeira_Cartao">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Area stage\Indo ST_Tb_Bandeira_Cartao\Tb_Bandeira_Cartao">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
